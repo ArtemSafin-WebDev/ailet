@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Input Mono';
+    src: url('../assets/fonts/InputMono-Bold.woff2') format('woff2'), url('../assets/fonts/InputMono-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PT Root UI Web';
+    src: url('../assets/fonts/PTRootUIWeb-Bold.woff2') format('woff2'), url('../assets/fonts/PTRootUIWeb-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PT Root UI Web';
+    src: url('../assets/fonts/PTRootUIWeb-Medium.woff2') format('woff2'), url('../assets/fonts/PTRootUIWeb-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PT Root UI Web';
+    src: url('../assets/fonts/PTRootUIWeb-Regular.woff2') format('woff2'), url('../assets/fonts/PTRootUIWeb-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

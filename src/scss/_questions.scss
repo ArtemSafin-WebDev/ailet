@@ -1,0 +1,155 @@
+.questions {
+    position: relative;
+    z-index: 5;
+    padding-top: 24rem;
+    padding-bottom: 12rem;
+
+    @include breakpoint(mobile) {
+        padding-top: 3rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.questions__intro-text {
+    max-width: 109.2rem;
+    margin-left: auto;
+    padding-top: 4rem;
+    border-top: 2px solid #0f001e;
+
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 4.1rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 19rem;
+
+    svg {
+        width: 2rem;
+        height: 4.1rem;
+        flex-shrink: 0;
+        margin-left: 2rem;
+        fill: currentColor;
+
+        @include breakpoint(mobile) {
+            width: 1.8rem;
+            height: 1.8rem;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        padding-top: 2rem;
+        border-top: 1px solid #0f001e;
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 6rem;
+    }
+}
+.questions__actual-questions {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 22rem;
+    @include breakpoint(mobile) {
+        margin-bottom: 6rem;
+    }
+}
+
+.questions__actual-questions-symbol {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 48rem;
+    height: auto;
+    z-index: -1;
+
+    @include breakpoint(mobile) {
+        width: 70%;
+    }
+}
+
+.questions__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.questions__item {
+    margin-bottom: 1.7rem;
+    font-weight: bold;
+    font-size: 6.6rem;
+    line-height: 8.3rem;
+    text-align: center;
+
+    @include breakpoint(mobile) {
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
+}
+
+.questions__benefits {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 3rem;
+    grid-column-gap: 7rem;
+    max-width: 109.2rem;
+    margin-left: auto;
+    padding-top: 6.4rem;
+    border-top: 2px solid #0f001e;
+    margin-bottom: 12rem;
+
+    @include breakpoint(mobile) {
+        grid-gap: 2rem;
+        max-width: none;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        padding-top: 2rem;
+        border-top: 1px solid #0f001e;
+        margin-bottom: 4rem;
+    }
+}
+
+.questions__benefits-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.questions__benefits-item-key {
+    font-weight: bold;
+    font-size: 5.6rem;
+    line-height: 7.1rem;
+    margin-bottom: 2rem;
+    color: #ff7236;
+
+    @include breakpoint(mobile) {
+        font-size: 3rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+}
+
+.questions__benefits-item-value {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: 0.02em;
+
+    @include breakpoint(mobile) {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
+}
+
+.questions__slogan {
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 4.1rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    @include breakpoint(mobile) {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+}

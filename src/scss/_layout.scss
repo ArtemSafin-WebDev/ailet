@@ -1,0 +1,104 @@
+.container {
+    width: 100%;
+    max-width: calc(var(--max-container-width) + 2 * var(--content-padding));
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
+    @supports (width: max(20vw, 100px)) {
+        padding-left: max(env(safe-area-inset-left, 1.4rem), var(--content-padding));
+        padding-right: max(env(safe-area-inset-right, 1.4rem), var(--content-padding));
+    }
+}
+
+
+
+.page-main {
+    flex-grow: 1;
+    // display: flex;
+    // flex-direction: column;
+}
+
+.side-screen {
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 10;
+    background-color: var(--deep-blue);
+  
+
+    @include breakpoint(mobile) {
+        z-index: 100;
+        padding-bottom: 9rem;
+    }
+}
+
+.side-screen-inner {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+   
+    video {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        // @include breakpoint(mobile) {
+        //     display: none;
+        // }
+    }
+
+    img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 61rem;
+        // @include objectFitContain();
+        // display: none;
+
+        // @include breakpoint(mobile) {
+        //     display: block;
+        // }
+       
+    }
+}
+
+.side-screen-text {
+    font-size: 4.5rem;
+    line-height: 5.4rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--input-mono);
+    z-index: 5;
+
+
+    @include breakpoint(mobile) {
+        font-size: 2.4rem;
+        line-height: 1.3;
+    }
+}
+
+
+.page-content {
+    // flex-grow: 1;
+    // display: flex;
+    // flex-direction: column;
+  
+    background-color: #fff;
+    position: relative;
+    z-index: 20;
+    min-height: 100vh;
+    overflow: hidden;
+}
