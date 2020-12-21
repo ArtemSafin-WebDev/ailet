@@ -1,5 +1,9 @@
 .intro {
-   
+   background-color: #fff;
+   position: relative;
+   z-index: 10;
+   display: flex;
+   flex-direction: column;
 }
 
 .intro__shape {
@@ -26,9 +30,9 @@
     position: relative;
     z-index: 1;
 
-    @include breakpoint(tablet) {
-        min-height: 90rem;
-    }
+    // @include breakpoint(tablet) {
+    //     min-height: 90rem;
+    // }
     @include breakpoint(mobile) {
         padding-top: 16rem;
         padding-bottom: 3rem;

@@ -10,6 +10,12 @@ export default function HomepageAnimations() {
     const mainContent = document.querySelector('.page-content');
     const sideScreenInner = document.querySelector('.side-screen-inner');
     const shape = document.querySelector('.intro__shape-image');
+    const intro = document.querySelector('.intro');
+    const pageHeader = document.querySelector('.page-header');
+    const pageHeaderRightCol = document.querySelector('.page-header__right-col');
+
+    const logo = document.querySelector('.page-header__logo-image:not(.page-header__logo-image--white)');
+    const logoWhite = document.querySelector('.page-header__logo-image--white');
 
     if (sideScreen && mainContent && sideScreenInner) {
         console.log('Main screen animation');
@@ -29,23 +35,24 @@ export default function HomepageAnimations() {
                 });
             });
         } else {
-            gsap.set(mainContent, {
+            gsap.set(intro, {
                 xPercent: 100
             });
 
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     start: 'top top',
-                    end: '+=100%',
+                  
+                    end: () => `+=${intro.offsetHeight}`,
                     scrub: 1,
-                    trigger: mainContent,
-                    pin: mainContent,
-                    pinSpacing: false
+                    trigger: intro,
+                    pin: intro,
+                    pinSpacing: true
                 }
             });
 
             timeline
-                .to(mainContent, {
+                .to(intro, {
                     xPercent: 0,
                     duration: 1
                 })
@@ -74,10 +81,58 @@ export default function HomepageAnimations() {
                     0.5
                 );
 
-           
+            gsap.set(logo, {
+                autoAlpha: 0
+            });
+            gsap.set(logoWhite, {
+                autoAlpha: 1
+            });
+
+            gsap.set(pageHeaderRightCol, {
+                autoAlpha: 0
+            });
+
+            const headerTl = gsap.timeline({
+                scrollTrigger: {
+                    start: 'top top',
+                    end: '+=100%',
+                    scrub: 1,
+                    trigger: intro,
+                    pin: pageHeader,
+                    pinSpacing: false
+                }
+            });
+
+            headerTl
+                .to(
+                    logoWhite,
+                    {
+                        autoAlpha: 0,
+                        duration: 0.2
+                    },
+                    0.3
+                )
+                .to(
+                    logo,
+                    {
+                        autoAlpha: 1,
+                        duration: 0.2
+                    },
+                    0.3
+                )
+                .to(
+                    pageHeaderRightCol,
+                    {
+                        autoAlpha: 1,
+                        duration: 0.2
+                    },
+                    0.1
+                );
 
             window.addEventListener('load', () => {
                 document.documentElement.classList.add('scroll-allowed');
+
+                
             });
         }
 

@@ -1,6 +1,6 @@
 .questions {
-    position: relative;
-    z-index: 5;
+    // position: relative;
+    // z-index: 5;
     padding-top: 24rem;
     padding-bottom: 12rem;
 
@@ -8,6 +8,11 @@
         padding-top: 3rem;
         padding-bottom: 5rem;
     }
+}
+
+.questions__content {
+    position: relative;
+    z-index: 20;
 }
 
 .questions__intro-text {
