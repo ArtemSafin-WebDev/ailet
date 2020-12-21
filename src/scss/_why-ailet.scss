@@ -1,0 +1,147 @@
+.why-ailet {
+    padding-top: 10rem;
+    padding-bottom: 17rem;
+
+    position: relative;
+    z-index: 1;
+
+
+    @include breakpoint(mobile) {
+        padding: 4rem 0;
+    }
+    
+}
+
+.why-ailet__heading {
+    border-top: 2px solid #0f001e;
+
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 4.1rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding-top: 4rem;
+    margin-bottom: 8rem;
+
+    @include breakpoint(mobile) {
+        padding-top: 2rem;
+        border-top: 1px solid #0f001e;
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 3rem;
+    }
+}
+
+.why-ailet__benefits {
+    max-width: 109.4rem;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include breakpoint(mobile) {
+        max-width: none;
+        margin: 0;
+        flex-direction: column;
+        justify-content: initial;
+        align-items: initial;
+    }
+}
+
+.why-ailet__benefits-col {
+    width: 46rem;
+    margin-right: 4rem;
+    &:last-child {
+        margin-right: 0;
+    }
+
+    @include breakpoint(mobile) {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 3rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.why-ailet__benefits-card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 13.5rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+
+    @include breakpoint(mobile) {
+        margin-bottom: 3rem;
+    }
+}
+
+.why-ailet__benefits-card-icon {
+    width: 3.4rem;
+    height: 3.4rem;
+    flex-shrink: 0;
+    margin-right: 5.5rem;
+    @include objectFitContain();
+
+    @include breakpoint(mobile) {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin-right: 2rem;
+    }
+}
+
+.why-ailet__benefits-card-content {
+    width: 50%;
+    flex-grow: 1;
+  
+}
+
+.why-ailet__benefits-card-heading {
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+    text-transform: uppercase;
+    margin-bottom: 2.4rem;
+
+    @include breakpoint(mobile) {
+       font-size: 1.8rem;
+       line-height: 1.2;
+       margin-bottom: 1rem;
+       margin-top: 0.1rem;
+    }
+}
+
+.why-ailet__benefits-card-text {
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 2.6rem;
+
+    @include breakpoint(mobile) {
+        font-size: 1.6rem;
+        line-height: 1.2;
+    }
+}
+
+
+.why-ailet__shape-image {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    right: 0;
+    transform: translateX(50%) translateY(-12%);
+}
+
+
+.why-ailet__shape-image {
+    height: 190rem;
+    width: auto;
+    max-width: none;
+    display: block;
+
+    @include breakpoint(mobile) {
+        display: none;
+    }
+}

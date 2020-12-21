@@ -350,4 +350,35 @@ export default function HomepageAnimations() {
             }, 300)
         );
     }
+
+
+    const benefits = document.querySelector('.why-ailet__benefits')
+    if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches && benefits) {
+        const columns = Array.from(document.querySelectorAll('.why-ailet__benefits-col'));
+     
+        if (columns[0]) {
+            gsap.to(columns[0], {
+                y: 70,
+                
+                scrollTrigger: {
+                    scrub: 1,
+                    trigger: benefits,
+                    start: 'top bottom',
+                    end: 'bottom top'
+                }
+            })
+        }
+        if (columns[1]) {
+            gsap.to(columns[1], {
+                y: -70,
+                
+                scrollTrigger: {
+                    scrub: 1,
+                    trigger: benefits,
+                    start: 'top bottom',
+                    end: 'bottom top'
+                }
+            })
+        }
+    }
 }
