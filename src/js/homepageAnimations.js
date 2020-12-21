@@ -1,7 +1,8 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { MOBILE_WIDTH } from './constants';
+import { MOBILE_WIDTH, SMALL_TABLET, TABLET_WIDTH } from './constants';
+import { debounce } from 'lodash';
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -20,7 +21,7 @@ export default function HomepageAnimations() {
     if (sideScreen && mainContent && sideScreenInner) {
         console.log('Main screen animation');
 
-        if (window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
+        if (window.matchMedia(`(max-width: ${SMALL_TABLET}px)`).matches) {
             const timeline = gsap.timeline();
 
             window.addEventListener('load', () => {
@@ -42,7 +43,7 @@ export default function HomepageAnimations() {
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     start: 'top top',
-                  
+
                     end: () => `+=${intro.offsetHeight}`,
                     scrub: 1,
                     trigger: intro,
@@ -126,13 +127,11 @@ export default function HomepageAnimations() {
                         autoAlpha: 1,
                         duration: 0.2
                     },
-                    0.1
+                    0
                 );
 
             window.addEventListener('load', () => {
                 document.documentElement.classList.add('scroll-allowed');
-
-                
             });
         }
 
@@ -147,7 +146,7 @@ export default function HomepageAnimations() {
             scrollTrigger: {
                 start: 'top bottom',
                 end: 'bottom top',
-                markers: true,
+                markers: false,
                 scrub: 1,
                 trigger: container
             }
@@ -176,5 +175,179 @@ export default function HomepageAnimations() {
                 );
             }
         });
+    }
+
+    const howItWorks = document.querySelector('.how-it-works');
+    const howItWorksItems = Array.from(document.querySelectorAll('.how-it-works__item'));
+    const howItWorksContainer = document.querySelector('.how-it-works__items');
+
+    if (howItWorksItems.length) {
+        const maxHeight = Math.max(
+            ...howItWorksItems.map(item => {
+                const height = item.offsetHeight;
+                console.log(item, height);
+                return height;
+            })
+        );
+        howItWorksItems.forEach(item => {
+            gsap.set(item, {
+                position: 'absolute',
+                left: 0,
+                top: '50%',
+                yPercent: -50,
+                autoAlpha: 0
+            });
+        });
+
+        gsap.set(howItWorksItems[0], {
+            autoAlpha: 1
+        });
+
+        console.log('Max height', maxHeight);
+
+        gsap.set(howItWorksContainer, {
+            height: maxHeight
+        });
+
+        let timeline = null;
+
+        if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
+            timeline = gsap.timeline({
+                scrollTrigger: {
+                    start: 'bottom bottom',
+                    end: '+=100%',
+                    scrub: 1,
+                    trigger: howItWorksContainer,
+                    pin: true,
+                    pinSpacing: true,
+                    snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels'
+                }
+            });
+        } else {
+            timeline = gsap.timeline({
+                scrollTrigger: {
+                    start: 'top top',
+                    end: '+=100%',
+                    scrub: 1,
+                    trigger: howItWorksContainer,
+                    pin: true,
+                    pinSpacing: true,
+                    snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels'
+                }
+            });
+        }
+
+       
+
+        const firstTextBlock = howItWorksItems[0].querySelector('.how-it-works__item-text-block');
+
+        const secondPhoneImage = howItWorksItems[1].querySelector('.how-it-works__item-image--phone');
+        const secondTextBlock = howItWorksItems[1].querySelector('.how-it-works__item-text-block');
+
+        const thirdPhoneImage = howItWorksItems[2].querySelector('.how-it-works__item-image--phone');
+        const thirdTextBlock = howItWorksItems[2].querySelector('.how-it-works__item-text-block');
+
+        if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
+            timeline
+                .to(howItWorksItems[0], {
+                    autoAlpha: 0,
+                    duration: 1
+                })
+                .to(
+                    firstTextBlock,
+                    {
+                        duration: 1,
+                        yPercent: -100
+                    },
+                    '<'
+                )
+                .to(howItWorksItems[1], {
+                    autoAlpha: 1,
+                    duration: 1
+                })
+                .from(
+                    secondPhoneImage,
+                    {
+                        duration: 1,
+                        yPercent: 30
+                    },
+                    '<'
+                )
+                .from(
+                    secondTextBlock,
+                    {
+                        duration: 1,
+                        yPercent: 100
+                    },
+                    '<'
+                )
+                .addLabel('secondStep', '>')
+                .to(howItWorksItems[1], {
+                    autoAlpha: 0,
+                    duration: 1
+                })
+                .to(
+                    secondTextBlock,
+                    {
+                        duration: 1,
+                        yPercent: -100
+                    },
+                    '<'
+                )
+                .to(howItWorksItems[2], {
+                    autoAlpha: 1,
+                    duration: 1
+                })
+                .from(
+                    thirdPhoneImage,
+                    {
+                        duration: 1,
+                        yPercent: 30
+                    },
+                    '<'
+                )
+                .addLabel('thirdStep', '>');
+        } else {
+            timeline
+                .to(howItWorksItems[0], {
+                    autoAlpha: 0,
+                    duration: 1
+                })
+
+                .to(howItWorksItems[1], {
+                    autoAlpha: 1,
+                    duration: 1
+                })
+
+                .addLabel('secondStep', '>')
+                .to(howItWorksItems[1], {
+                    autoAlpha: 0,
+                    duration: 1
+                })
+
+                .to(howItWorksItems[2], {
+                    autoAlpha: 1,
+                    duration: 1
+                })
+
+                .addLabel('thirdStep', '>');
+        }
+
+        window.addEventListener(
+            'resize',
+            debounce(() => {
+                const maxHeight = Math.max(
+                    ...howItWorksItems.map(item => {
+                        const height = item.offsetHeight;
+                        console.log(item, height);
+                        return height;
+                    })
+                );
+
+                gsap.set(howItWorksContainer, {
+                    height: maxHeight
+                });
+            }, 300)
+        );
     }
 }

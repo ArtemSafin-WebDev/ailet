@@ -13,6 +13,11 @@
     bottom: 0;
     right: -45%;
     transform: translateY(24%);
+
+    @include breakpoint(small-tablet) {
+        right: -38%;
+        transform: translateY(20%);
+    }
 }
 
 
@@ -30,12 +35,14 @@
     position: relative;
     z-index: 1;
 
-    // @include breakpoint(tablet) {
-    //     min-height: 90rem;
-    // }
+    @include breakpoint(small-tablet) {
+        min-height: 90rem;
+        padding: 12rem 0;
+    }
     @include breakpoint(mobile) {
         padding-top: 16rem;
         padding-bottom: 3rem;
+        min-height: 100vh;
     }
 }
 

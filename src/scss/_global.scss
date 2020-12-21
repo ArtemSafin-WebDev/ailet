@@ -62,7 +62,7 @@ html {
     }
 
     @include breakpoint(small-tablet) {
-        font-size: 5px;
+        font-size: 6px;
     }
 
     @include breakpoint(mobile) {

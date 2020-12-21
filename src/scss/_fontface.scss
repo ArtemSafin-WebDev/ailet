@@ -6,6 +6,13 @@
     font-display: swap;
 }
 @font-face {
+    font-family: 'Input Mono';
+    src: url('../assets/fonts/InputMono-Regular.woff2') format('woff2'), url('../assets/fonts/InputMono-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
     font-family: 'PT Root UI Web';
     src: url('../assets/fonts/PTRootUIWeb-Bold.woff2') format('woff2'), url('../assets/fonts/PTRootUIWeb-Bold.woff') format('woff');
     font-weight: bold;
