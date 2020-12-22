@@ -84,7 +84,16 @@
     font-family: var(--input-mono);
     z-index: 5;
     font-weight: 700;
+    opacity: 0;
+    transition: opacity .5s;
 
+    .animatable & {
+        opacity: 1;
+    }
+
+    @include breakpoint(tablet) {
+        opacity: 1;
+    }
     @include breakpoint(mobile) {
         font-size: 2.4rem;
         line-height: 1.3;

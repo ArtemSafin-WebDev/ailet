@@ -46,5 +46,47 @@ export default function Menu() {
         if (menuOpen) {
             closeMenu();
         }
+    });
+
+
+    const formOpenBtns = Array.from(document.querySelectorAll('.js-form-open'));
+    const formMenu = document.querySelector('.contact-form');
+    const formCloseBtns = Array.from(document.querySelectorAll('.js-form-close'));
+
+    let formMenuOpen = false;
+
+    const openFormMenu = () => {
+        document.body.classList.add('contact-form-shown');
+        formMenuOpen = true;
+        lockScroll(formMenu)
+    }
+    const closeFormMenu = () => {
+        document.body.classList.remove('contact-form-shown');
+        formMenuOpen = false;
+        unlockScroll()
+    }
+
+
+    formOpenBtns.forEach(element => {
+        element.addEventListener('click', event => {
+            event.preventDefault();
+
+            if (!formMenuOpen) {
+                if (menuOpen) {
+                    closeMenu();
+                }
+
+                openFormMenu();
+            }
+        })
+    })
+    formCloseBtns.forEach(element => {
+        element.addEventListener('click', event => {
+            event.preventDefault();
+
+            if (formMenuOpen) {
+                closeFormMenu();
+            }
+        })
     })
 }

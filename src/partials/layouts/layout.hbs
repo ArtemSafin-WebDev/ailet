@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -120,41 +120,49 @@
                 </div>
             </div>
         </div>
-        {{!-- <div class="contact-form">
+        <div class="contact-form">
+
+            <button class="contact-form__close-btn js-form-close">
+                <svg width="14" height="14" aria-hidden="true" class="icon icon-cross">
+                    <use xlink:href="#cross" />
+                </svg>
+            </button>
             <div class="contact-form__inner">
                 <div class="container">
                     <div class="contact-form__row">
                         <div class="contact-form__left-col">
-
+                            <div class="contact-form__sphere">
+                                <img src="img/sphere-large.jpg" alt="" class="contact-form__sphere-image">
+                            </div>
                         </div>
                         <div class="contact-form__right-col">
                             <h2 class="contact-form__heading">
                                 How can we help you?
                             </h2>
-                            <form action="/" method="POST" class="contact-form__form">
+                            <form action="/" method="POST" class="contact-form__form" data-need-validation>
                                 <div class="contact-form__form-input-wrapper">
                                     <input type="text" class="contact-form__form-input" id="firstname"
-                                        placeholder="First name">
+                                        placeholder="First name" autocomplete="not" required>
                                     <label for="firstname" class="contact-form__form-input-label">First name</label>
                                 </div>
                                 <div class="contact-form__form-input-wrapper">
                                     <input type="text" class="contact-form__form-input" id="jobtitle"
-                                        placeholder="Job title">
+                                        placeholder="Job title" autocomplete="not">
                                     <label for="jobtitle" class="contact-form__form-input-label">Job title</label>
                                 </div>
                                 <div class="contact-form__form-input-wrapper">
-                                    <input type="email" class="contact-form__form-input" id="email"
-                                        placeholder="E-mail">
+                                    <input type="email" class="contact-form__form-input" id="email" placeholder="E-mail"
+                                        autocomplete="not" required>
                                     <label for="email" class="contact-form__form-input-label">E-mail</label>
                                 </div>
                                 <div class="contact-form__form-input-wrapper">
                                     <input type="text" class="contact-form__form-input" id="companyname"
-                                        placeholder="Company name">
+                                        placeholder="Company name" autocomplete="not" required>
                                     <label for="companyname" class="contact-form__form-input-label">Company name</label>
                                 </div>
                                 <div class="contact-form__form-input-wrapper">
                                     <input type="tel" class="contact-form__form-input" id="phone"
-                                        placeholder="Phone number">
+                                        placeholder="Phone number" autocomplete="not" required>
                                     <label for="phone" class="contact-form__form-input-label">Phone number</label>
                                 </div>
                                 <div class="contact-form__form-input-wrapper">
@@ -174,11 +182,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="contact-form__form-input-wrapper">
+                                <div class="contact-form__form-input-wrapper" id="whoare-wrapper">
                                     <div class="contact-form__custom-select">
 
 
-                                        <select name="whoare" class="js-custom-select">
+                                        <select name="whoare" class="js-custom-select" required data-parsley-class-handler="#whoare-wrapper" data-parsley-errors-container="#whoare-wrapper" data-parsley-trigger="change">
                                             <option value="" placeholder>
                                                 Who are you?
                                             </option>
@@ -218,20 +226,29 @@
                                     </div>
                                 </div>
 
-                                <div class="contact-form__form-input-wrapper contact-form__form-input-wrapper--fullwidth">
+                                <div
+                                    class="contact-form__form-input-wrapper contact-form__form-input-wrapper--fullwidth">
                                     <input type="text" class="contact-form__form-input" id="message"
-                                        placeholder="Message">
+                                        placeholder="Message" autocomplete="not">
                                     <label for="message" class="contact-form__form-input-label">Message</label>
                                 </div>
 
                                 <button type="submit" class="contact-form__form-submit">Send</button>
+                                <label class="contact-form__checkbox">
+                                    <input type="checkbox" name="policy" class="contact-form__checkbox-input" value="Y"
+                                        checked>
+                                    <span class="contact-form__checkbox-mark">
+
+                                    </span>
+                                    I give on data submission
+                                </label>
                             </form>
                         </div>
                     </div>
 
                 </div>
             </div>
-        </div> --}}
+        </div>
         {{> header }}
 
         <main class="page-main">

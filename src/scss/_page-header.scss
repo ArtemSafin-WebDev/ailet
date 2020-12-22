@@ -47,6 +47,20 @@
 .page-header__logo {
     position: relative;
     align-self: flex-start;
+    opacity: 0;
+    transition: opacity .5s;
+
+    .animatable & {
+        opacity: 1;
+    }
+
+    .menu-shown & {
+        opacity: 1;
+    }
+
+    @include breakpoint(tablet) {
+        opacity: 1;
+    }
 }
 
 .page-header__logo-image {

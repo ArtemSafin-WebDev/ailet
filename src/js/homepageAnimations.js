@@ -257,7 +257,7 @@ export default function HomepageAnimations() {
         const secondTextBlock = howItWorksItems[1].querySelector('.how-it-works__item-text-block');
 
         const thirdPhoneImage = howItWorksItems[2].querySelector('.how-it-works__item-image--phone');
-        const thirdTextBlock = howItWorksItems[2].querySelector('.how-it-works__item-text-block');
+       
 
         if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
             timeline
@@ -369,12 +369,12 @@ export default function HomepageAnimations() {
 
         if (columns[0]) {
             gsap.to(columns[0], {
-                y: 70,
+                y: 100,
 
                 scrollTrigger: {
                     scrub: 1,
                     trigger: benefits,
-                    start: 'top bottom',
+                    start: 'top center',
                     end: 'bottom top'
                 }
             });
@@ -386,7 +386,7 @@ export default function HomepageAnimations() {
                 scrollTrigger: {
                     scrub: 1,
                     trigger: benefits,
-                    start: 'top bottom',
+                    start: 'top center',
                     end: 'bottom top'
                 }
             });

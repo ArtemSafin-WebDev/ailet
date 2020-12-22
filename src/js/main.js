@@ -6,6 +6,8 @@ import Clients from './clients';
 import Menu from './menu';
 import AnchorLinks from './anchorLinks';
 import CustomSelects from './customSelects';
+import Validation from './validation';
+
 
 
 
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     Menu();
     AnchorLinks();
     CustomSelects();
+    Validation();
 });
 
 window.addEventListener('load', function() {
