@@ -29,7 +29,7 @@
     background-color: var(--deep-blue);
   
 
-    @include breakpoint(small-tablet) {
+    @include breakpoint(tablet) {
         z-index: 100;
         padding-bottom: 9rem;
     }

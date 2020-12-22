@@ -121,14 +121,14 @@
         background-color: currentColor;
         transition: transform .3s;
         
-        @include breakpoint(mobile) {
+        @include breakpoint(tablet) {
             height: 2px;
         }
     }
 
     &::before {
         margin-bottom: 0.7rem;
-        @include breakpoint(mobile) {
+        @include breakpoint(tablet) {
             margin-bottom: 4px;
         }
     }
@@ -145,7 +145,7 @@
         }
 
 
-        @include breakpoint(mobile) {
+        @include breakpoint(tablet) {
             &::before {
                 transform: translateY(3px) rotate(45deg);
             }
@@ -161,7 +161,7 @@
     //     width: 3.5rem;
     // }
 
-    @include breakpoint(mobile) {
+    @include breakpoint(tablet) {
         width: 20px;
         margin-right: 1rem;
     }

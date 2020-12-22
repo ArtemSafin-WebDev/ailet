@@ -21,7 +21,7 @@ export default function HomepageAnimations() {
     if (sideScreen && mainContent && sideScreenInner) {
         console.log('Main screen animation');
 
-        if (window.matchMedia(`(max-width: ${SMALL_TABLET}px)`).matches) {
+        if (window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches) {
             const timeline = gsap.timeline();
 
             window.addEventListener('load', () => {
@@ -132,6 +132,20 @@ export default function HomepageAnimations() {
 
             window.addEventListener('load', () => {
                 document.documentElement.classList.add('scroll-allowed');
+
+                setTimeout(() => {
+                    gsap.to(window, {
+                        duration: 2,
+                        ease: 'power2.out',
+                        scrollTo: {
+                            y: intro.offsetHeight / 3.4,
+                            autoKill: true
+                        }
+                        // onComplete: () => {
+                        //     document.documentElement.classList.add('scroll-allowed');
+                        // }
+                    });
+                }, 400);
             });
         }
 
@@ -215,7 +229,7 @@ export default function HomepageAnimations() {
             timeline = gsap.timeline({
                 scrollTrigger: {
                     start: 'bottom bottom',
-                    end: '+=100%',
+                    end: '+=200%',
                     scrub: 1,
                     trigger: howItWorksContainer,
                     pin: true,

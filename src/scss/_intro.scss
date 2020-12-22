@@ -35,7 +35,7 @@
     position: relative;
     z-index: 1;
 
-    @include breakpoint(small-tablet) {
+    @include breakpoint(tablet) {
         min-height: 90rem;
         padding: 12rem 0;
     }
