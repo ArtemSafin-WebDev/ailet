@@ -5,6 +5,7 @@ import Accordions from './accordions';
 import Clients from './clients';
 import Menu from './menu';
 import AnchorLinks from './anchorLinks';
+import CustomSelects from './customSelects';
 
 document.addEventListener('DOMContentLoaded', function() {
     polyfills();
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     Clients();
     Menu();
     AnchorLinks();
+    CustomSelects();
 });
 
 window.addEventListener('load', function() {
