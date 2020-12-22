@@ -2,7 +2,7 @@
     position: absolute;
     left: 0;
     top: 4.5rem;
-    z-index: 600;
+    z-index: 800;
     width: 100%;
 
 
@@ -34,6 +34,11 @@
     display: flex;
     align-items: center;
 
+    .menu-shown & {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
     @include breakpoint(mobile) {
         display: contents;
     }
@@ -56,6 +61,11 @@
         opacity: 0;
     }
 
+
+    .menu-shown &--white {
+        opacity: 1 !important;
+    }
+
     @include breakpoint(mobile) {
         width: 5rem;
     }
@@ -75,6 +85,11 @@
 
     &:hover {
         color: var(--primary-color);
+    }
+
+
+    .menu-shown & {
+        color: white;
     }
 
     @include breakpoint(small-tablet) {
@@ -102,29 +117,52 @@
         content: '';
         display: block;
         width: 100%;
-        height: 2px;
+        height: .2rem;
         background-color: currentColor;
-
+        transition: transform .3s;
         
-        @include breakpoint(small-tablet) {
-            height: 1px;
+        @include breakpoint(mobile) {
+            height: 2px;
         }
     }
 
     &::before {
         margin-bottom: 0.7rem;
         @include breakpoint(mobile) {
-            margin-bottom: 0.4rem;
+            margin-bottom: 4px;
         }
     }
 
 
-    @include breakpoint(small-tablet) {
-        width: 3.5rem;
+    .menu-shown & {
+
+        &::before {
+            transform: translateY(.45rem) rotate(45deg);
+        }
+
+        &::after {
+            transform: translateY(-.45rem) rotate(-45deg);
+        }
+
+
+        @include breakpoint(mobile) {
+            &::before {
+                transform: translateY(3px) rotate(45deg);
+            }
+    
+            &::after {
+                transform: translateY(-3px) rotate(-45deg);
+            }
+        }
     }
 
+
+    // @include breakpoint(small-tablet) {
+    //     width: 3.5rem;
+    // }
+
     @include breakpoint(mobile) {
-        width: 2rem;
+        width: 20px;
         margin-right: 1rem;
     }
 }
@@ -141,6 +179,22 @@
     align-items: center;
     justify-content: center;
     transition: color 0.2s, background-color .2s;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135.66deg, #00CDFF 1.13%, #7744D2 41.3%, #FF3C01 70.14%, #FFC700 100%);
+        transition: opacity .3s, transform .6s;
+        pointer-events: none;
+        opacity: 0;
+    }
 
     &:link,
     &:visited {
@@ -157,6 +211,18 @@
         background-color: var(--primary-color);
     }
 
+
+    .menu-shown & {
+        &::before {
+            opacity: 1;
+        }
+
+        &:hover {
+            &::before {
+                transform: rotate(180deg);
+            }
+        }
+    }
 
     @include breakpoint(mobile) {
         width: 4.5rem;
