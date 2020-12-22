@@ -1,0 +1,83 @@
+.clients {
+    padding-top: 15rem;
+    padding-bottom: 20rem;
+
+
+    @include breakpoint(mobile) {
+        padding-top: 3rem;
+        padding-bottom: 8rem;
+    }
+}
+
+.clients__heading {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 4.1rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 14rem;
+    padding-top: 3rem;
+    border-top: 2px solid #0f001e;
+    justify-content: space-between;
+    max-width: 103rem;
+    .trusted-partners__become-a-partner {
+        margin: 0;
+        margin-left: 2rem;
+    }
+
+    @include breakpoint(mobile) {
+        padding-top: 2rem;
+        border-top: 1px solid #0f001e;
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 6rem;
+        
+    }
+}
+
+
+.clients__slider {
+    margin-bottom: 8.4rem;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 5rem;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+    .swiper-container {
+        overflow: visible;
+    }
+
+
+    .swiper-wrapper {
+        transition-timing-function: linear!important;
+    }
+
+    .swiper-slide {
+        width: 17.4rem;
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint(mobile) {
+            width: 12rem;
+        }
+        
+    }
+}
+
+
+.clients__slider-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.clients__slider-card-image {
+   display: block;
+  
+}

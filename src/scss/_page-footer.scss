@@ -1,0 +1,215 @@
+.page-footer {
+    background-color: var(--deep-blue);
+    color: white;
+    padding-top: 12rem;
+    padding-bottom: 8rem;
+    position: relative;
+    z-index: 1;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        opacity: 0.3;
+        height: 14.6rem;
+        z-index: 2;
+        background: linear-gradient(to left, #00cdff, #7744d2, #ff3c01, #ffc700);
+        mask-image: linear-gradient(to top, rgba(black, 0), rgba(black, 0.7));
+        pointer-events: none;
+
+        @include breakpoint(mobile) {
+            height: 10rem;
+        }
+       
+    }
+
+
+    @include breakpoint(mobile) {
+        padding: 4rem 0;
+    }
+}
+
+.page-footer__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    object-fit: cover;
+    object-position: right center;
+}
+
+.page-footer__content {
+    max-width: 79rem;
+    position: relative;
+    z-index: 40;
+}
+
+.page-footer__logo {
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 4.8rem;
+    line-height: 1.2;
+    margin-bottom: 10rem;
+    text-transform: uppercase;
+
+
+    @include breakpoint(mobile) {
+        font-size: 2.4rem;
+        line-height: 1.2;
+        margin-bottom: 4rem;
+    }
+}
+
+.page-footer__logo-image {
+    width: 4.6rem;
+    height: auto;
+    flex-shrink: 0;
+    margin-right: 2.6rem;
+
+    @include breakpoint(mobile) {
+        width: 3rem;
+        margin-right: 1.6rem;
+    }
+}
+
+.page-footer__contacts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 11rem;
+    grid-row-gap: 7.5rem;
+    margin-bottom: 22rem;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 5rem;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-gap: 4rem;
+    }
+}
+
+.page-footer__contacts-heading {
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+
+    a {
+        transition: color 0.2s;
+        &:link,
+        &:visited {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        &:hover {
+            color: white;
+        }
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @include breakpoint(mobile) {
+        font-size: 2rem;
+        margin-bottom: 1.4rem;
+    }
+}
+
+.page-footer__contacts-text {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    color: rgba(255, 255, 255, 0.35);
+
+    a {
+        font-weight: 500;
+        display: inline-block;
+        &:link,
+        &:visited {
+            color: white;
+        }
+
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+
+    @include breakpoint(mobile) {
+        font-size: 1.6rem;
+        line-height: 1.4;
+    }
+}
+
+.page-footer__bottom-panel {
+    padding-top: 2.5rem;
+    display: flex;
+    align-items: baseline;
+    border-top: 2px solid white;
+
+    @include breakpoint(mobile) {
+        flex-direction: column;
+        align-items: initial;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-gap: 2rem;
+    }
+}
+
+.page-footer__copyright {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    margin-right: 10rem;
+
+    @include breakpoint(mobile) {
+        margin: 0;
+       
+    }
+}
+
+.page-footer__policy {
+    color: white;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    &:link,
+    &:visited {
+        color: white;
+    }
+
+    @include breakpoint(mobile) {
+        margin: 0;
+       
+    }
+}
+
+
+.page-footer__made-by {
+    margin-left: auto;
+    color: white;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    display: inline-flex;
+    align-items: baseline;
+    &:link,
+    &:visited {
+        color: white;
+    }
+
+
+    @include breakpoint(mobile) {
+        margin: 0;
+       
+    }
+}
+
+
+.page-footer__made-by-logo {
+    width: 6.4rem;
+    height: auto;
+    margin-left: 0.8rem;
+    position: relative;
+    bottom: -.73rem;
+
+  
+}

@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MOBILE_WIDTH } from './constants';
 
 export default function Accordions() {
     const accordions = Array.from(document.querySelectorAll('.solutions__accordion'));
@@ -48,7 +49,7 @@ export default function Accordions() {
     });
 
 
-    if (accordions.length) {
+    if (accordions.length && !window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
         accordions[0].classList.add('active');
         images[0].classList.add('active');
         const content = accordions[0].querySelector('.solutions__accordion-content');

@@ -237,8 +237,6 @@ export default function HomepageAnimations() {
             });
         }
 
-       
-
         const firstTextBlock = howItWorksItems[0].querySelector('.how-it-works__item-text-block');
 
         const secondPhoneImage = howItWorksItems[1].querySelector('.how-it-works__item-image--phone');
@@ -351,34 +349,50 @@ export default function HomepageAnimations() {
         );
     }
 
-
-    const benefits = document.querySelector('.why-ailet__benefits')
+    const benefits = document.querySelector('.why-ailet__benefits');
     if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches && benefits) {
         const columns = Array.from(document.querySelectorAll('.why-ailet__benefits-col'));
-     
+
         if (columns[0]) {
             gsap.to(columns[0], {
                 y: 70,
-                
+
                 scrollTrigger: {
                     scrub: 1,
                     trigger: benefits,
                     start: 'top bottom',
                     end: 'bottom top'
                 }
-            })
+            });
         }
         if (columns[1]) {
             gsap.to(columns[1], {
                 y: -70,
-                
+
                 scrollTrigger: {
                     scrub: 1,
                     trigger: benefits,
                     start: 'top bottom',
                     end: 'bottom top'
                 }
-            })
+            });
         }
+    }
+
+    const clientsSlidersContainer = document.querySelector('.clients__sliders');
+    const clientsSliders = Array.from(document.querySelectorAll('.clients__slider'));
+
+    if (clientsSlidersContainer && clientsSliders.length && !window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
+        clientsSliders.forEach((element, elementIndex) => {
+            gsap.to(element, {
+                x: elementIndex % 2 == 0 ? -300 : 300,
+                scrollTrigger: {
+                    trigger: clientsSlidersContainer,
+                    scrub: 1,
+                    start: 'top bottom',
+                    end: 'bottom top'
+                }
+            });
+        });
     }
 }

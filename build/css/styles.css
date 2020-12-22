@@ -2125,7 +2125,7 @@ select:-webkit-autofill:focus {
   text-transform: uppercase; }
   @media only screen and (max-width: 968px) {
     .how-it-works__item-large-heading {
-      font-size: 9rem;
+      font-size: 7rem;
       line-height: 1.3;
       margin-bottom: 3rem; }
       .how-it-works__item-large-heading br {
@@ -2879,3 +2879,275 @@ select:-webkit-autofill:focus {
       max-height: 5rem;
       width: auto;
       max-width: 100%; } }
+
+.clients {
+  padding-top: 15rem;
+  padding-bottom: 20rem; }
+  @media only screen and (max-width: 767px) {
+    .clients {
+      padding-top: 3rem;
+      padding-bottom: 8rem; } }
+
+.clients__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 4.1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 14rem;
+  padding-top: 3rem;
+  border-top: 2px solid #0f001e;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 103rem; }
+  .clients__heading .trusted-partners__become-a-partner {
+    margin: 0;
+    margin-left: 2rem; }
+  @media only screen and (max-width: 767px) {
+    .clients__heading {
+      padding-top: 2rem;
+      border-top: 1px solid #0f001e;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      margin-bottom: 6rem; } }
+
+.clients__slider {
+  margin-bottom: 8.4rem; }
+  @media only screen and (max-width: 767px) {
+    .clients__slider {
+      margin-bottom: 5rem; } }
+  .clients__slider:last-child {
+    margin-bottom: 0; }
+  .clients__slider .swiper-container {
+    overflow: visible; }
+  .clients__slider .swiper-wrapper {
+    -webkit-transition-timing-function: linear !important;
+            transition-timing-function: linear !important; }
+  .clients__slider .swiper-slide {
+    width: 17.4rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    @media only screen and (max-width: 767px) {
+      .clients__slider .swiper-slide {
+        width: 12rem; } }
+
+.clients__slider-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.clients__slider-card-image {
+  display: block; }
+
+.page-footer {
+  background-color: var(--deep-blue);
+  color: white;
+  padding-top: 12rem;
+  padding-bottom: 8rem;
+  position: relative;
+  z-index: 1; }
+  .page-footer::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: 0.3;
+    height: 14.6rem;
+    z-index: 2;
+    background: -webkit-gradient(linear, right top, left top, from(#00cdff), color-stop(#7744d2), color-stop(#ff3c01), to(#ffc700));
+    background: linear-gradient(to left, #00cdff, #7744d2, #ff3c01, #ffc700);
+    -webkit-mask-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.7)));
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+            mask-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.7)));
+            mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    pointer-events: none; }
+    @media only screen and (max-width: 767px) {
+      .page-footer::before {
+        height: 10rem; } }
+  @media only screen and (max-width: 767px) {
+    .page-footer {
+      padding: 4rem 0; } }
+
+.page-footer__bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: right center;
+     object-position: right center; }
+
+.page-footer__content {
+  max-width: 79rem;
+  position: relative;
+  z-index: 40; }
+
+.page-footer__logo {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  font-size: 4.8rem;
+  line-height: 1.2;
+  margin-bottom: 10rem;
+  text-transform: uppercase; }
+  @media only screen and (max-width: 767px) {
+    .page-footer__logo {
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin-bottom: 4rem; } }
+
+.page-footer__logo-image {
+  width: 4.6rem;
+  height: auto;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-right: 2.6rem; }
+  @media only screen and (max-width: 767px) {
+    .page-footer__logo-image {
+      width: 3rem;
+      margin-right: 1.6rem; } }
+
+.page-footer__contacts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 11rem;
+  grid-row-gap: 7.5rem;
+  margin-bottom: 22rem; }
+  @media only screen and (max-width: 767px) {
+    .page-footer__contacts {
+      margin-bottom: 5rem;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      grid-gap: 4rem; } }
+
+.page-footer__contacts-heading {
+  font-weight: bold;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-bottom: 3rem; }
+  .page-footer__contacts-heading a {
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s; }
+    .page-footer__contacts-heading a:link, .page-footer__contacts-heading a:visited {
+      color: rgba(255, 255, 255, 0.8); }
+    .page-footer__contacts-heading a:hover {
+      color: white; }
+  .page-footer__contacts-heading:last-child {
+    margin-bottom: 0; }
+  @media only screen and (max-width: 767px) {
+    .page-footer__contacts-heading {
+      font-size: 2rem;
+      margin-bottom: 1.4rem; } }
+
+.page-footer__contacts-text {
+  font-size: 2rem;
+  line-height: 2.8rem;
+  color: rgba(255, 255, 255, 0.35); }
+  .page-footer__contacts-text a {
+    font-weight: 500;
+    display: inline-block; }
+    .page-footer__contacts-text a:link, .page-footer__contacts-text a:visited {
+      color: white; }
+    .page-footer__contacts-text a:hover {
+      color: var(--primary-color); }
+  @media only screen and (max-width: 767px) {
+    .page-footer__contacts-text {
+      font-size: 1.6rem;
+      line-height: 1.4; } }
+
+.page-footer__bottom-panel {
+  padding-top: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  border-top: 2px solid white; }
+  @media only screen and (max-width: 767px) {
+    .page-footer__bottom-panel {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: initial;
+          -ms-flex-align: initial;
+              align-items: initial;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 2rem; } }
+
+.page-footer__copyright {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  margin-right: 10rem; }
+  @media only screen and (max-width: 767px) {
+    .page-footer__copyright {
+      margin: 0; } }
+
+.page-footer__policy {
+  color: white;
+  font-size: 1.4rem;
+  line-height: 1.8rem; }
+  .page-footer__policy:link, .page-footer__policy:visited {
+    color: white; }
+  @media only screen and (max-width: 767px) {
+    .page-footer__policy {
+      margin: 0; } }
+
+.page-footer__made-by {
+  margin-left: auto;
+  color: white;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline; }
+  .page-footer__made-by:link, .page-footer__made-by:visited {
+    color: white; }
+  @media only screen and (max-width: 767px) {
+    .page-footer__made-by {
+      margin: 0; } }
+
+.page-footer__made-by-logo {
+  width: 6.4rem;
+  height: auto;
+  margin-left: 0.8rem;
+  position: relative;
+  bottom: -.73rem; }
