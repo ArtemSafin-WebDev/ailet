@@ -1568,6 +1568,10 @@ select:-webkit-autofill:focus {
   .intro.remove-transform {
     -webkit-transform: translateX(0);
             transform: translateX(0); }
+  @media only screen and (max-width: 1024px) {
+    .intro {
+      -webkit-transform: translateX(0) !important;
+              transform: translateX(0) !important; } }
 
 .intro__shape {
   position: absolute;

@@ -8,6 +8,10 @@
    &.remove-transform {
        transform: translateX(0);
    }
+
+   @include breakpoint(tablet) {
+        transform: translateX(0) !important;
+   }
    
 }
 
