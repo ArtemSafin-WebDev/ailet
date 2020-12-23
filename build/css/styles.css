@@ -3302,7 +3302,9 @@ select:-webkit-autofill:focus {
   opacity: 0;
   visibility: hidden;
   -webkit-transition: opacity 0.4s, visibility 0s linear 0.4s;
-  transition: opacity 0.4s, visibility 0s linear 0.4s; }
+  transition: opacity 0.4s, visibility 0s linear 0.4s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden; }
   .menu-shown .menu {
     opacity: 1;
     visibility: inherit;
@@ -3365,7 +3367,9 @@ select:-webkit-autofill:focus {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
-          flex-direction: column; }
+          flex-direction: column;
+  position: relative;
+  z-index: 300; }
   .menu__inner .container {
     margin: auto; }
     @media only screen and (max-width: 767px) {
