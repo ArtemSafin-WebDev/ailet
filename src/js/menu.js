@@ -1,6 +1,6 @@
-// import { clearAllBodyScrollLocks, disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { clearAllBodyScrollLocks, disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-import { lockScroll, unlockScroll } from "./scrollBlocker";
+// import { lockScroll, unlockScroll } from "./scrollBlocker";
 
 
 
@@ -20,13 +20,18 @@ export default function Menu() {
     const openMenu = () => {
         menuOpen = true;
         document.body.classList.add('menu-shown');
-        lockScroll(menu);
+        // lockScroll(menu);
+
+        disableBodyScroll(menu, {
+            reserveScrollBarGap: true,
+        })
     }
 
     const closeMenu = () => {
         menuOpen = false;
         document.body.classList.remove('menu-shown');
-        unlockScroll()
+        // unlockScroll()
+        clearAllBodyScrollLocks();
     }
     if (menu && menuBtn) {
         console.log('Menu code')
@@ -58,12 +63,18 @@ export default function Menu() {
     const openFormMenu = () => {
         document.body.classList.add('contact-form-shown');
         formMenuOpen = true;
-        lockScroll(formMenu)
+        // lockScroll(formMenu);
+
+        disableBodyScroll(formMenu, {
+            reserveScrollBarGap: true,
+        })
     }
     const closeFormMenu = () => {
         document.body.classList.remove('contact-form-shown');
         formMenuOpen = false;
-        unlockScroll()
+        // unlockScroll()
+
+        clearAllBodyScrollLocks();
     }
 
 

@@ -1042,7 +1042,8 @@ body {
   color: var(--deep-blue);
   background-color: #fff;
   font-family: var(--pt-root);
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  background-color: var(--deep-blue); }
 
 main {
   display: block; }
@@ -1564,6 +1565,9 @@ select:-webkit-autofill:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column; }
+  .intro.remove-transform {
+    -webkit-transform: translateX(0);
+            transform: translateX(0); }
 
 .intro__shape {
   position: absolute;

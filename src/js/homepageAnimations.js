@@ -36,9 +36,12 @@ export default function HomepageAnimations() {
                 });
             });
         } else {
+            intro.classList.add('remove-transform')
             gsap.set(intro, {
                 xPercent: 100
             });
+
+            
 
             const timeline = gsap.timeline({
                 scrollTrigger: {
@@ -53,7 +56,7 @@ export default function HomepageAnimations() {
             });
 
             timeline
-                .to(intro, {
+                .fromTo(intro, {xPercent: 100}, {
                     xPercent: 0,
                     duration: 1
                 })
