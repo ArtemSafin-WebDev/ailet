@@ -978,7 +978,7 @@ button.swiper-pagination-bullet {
   padding: 0; }
 
 :root {
-  --max-container-width: 145.6rem;
+  --max-container-width: 165.6rem;
   --content-padding: 6rem;
   --primary-color: #7744d2;
   --right-column-width: 36.2rem;
@@ -1042,8 +1042,7 @@ body {
   color: var(--deep-blue);
   background-color: #fff;
   font-family: var(--pt-root);
-  overflow-x: hidden;
-  background-color: var(--deep-blue); }
+  overflow-x: hidden; }
 
 main {
   display: block; }
