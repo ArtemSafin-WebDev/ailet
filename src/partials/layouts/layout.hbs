@@ -27,10 +27,14 @@
 
     <div class="side-screen">
         <div class="side-screen-inner">
-            {{!-- <video class="lazyload" muted="" data-autoplay="" loop playsinline data-poster="" preload="none">
-                <source src="assets/videos/sphere.mp4" type="video/mp4" />
-            </video> --}}
-            <img src="img/sphere-placeholder.jpg" alt="">
+            <div class="side-screen-inner__video-container">
+                <video class="lazyload" muted="" data-autoplay="" loop playsinline data-poster="img/video-poster.jpg"
+                    preload="none">
+                    <source src="assets/videos/video.mp4" type="video/mp4" />
+                </video>
+            </div>
+
+
             <div class="side-screen-text">
                 From image to insight
             </div>
@@ -40,7 +44,13 @@
 
     <div class="page-content">
         <div class="menu">
-            <img src="img/menu-sphere.jpg" alt="" class="menu__sphere">
+            <div class="menu__sphere-container">
+                <video class="lazyload" muted="" data-autoplay="" loop playsinline data-poster="img/video-poster.jpg"
+                    preload="none">
+                    <source src="assets/videos/video.mp4" type="video/mp4" />
+                </video>
+            </div>
+
             <div class="menu__inner">
                 <div class="container">
                     <div class="menu__row">
@@ -122,24 +132,27 @@
         </div>
         <div class="contact-form">
 
-            <button class="contact-form__close-btn js-form-close">
-                <svg width="14" height="14" aria-hidden="true" class="icon icon-cross">
-                    <use xlink:href="#cross" />
-                </svg>
-            </button>
+
             <div class="contact-form__inner">
                 <div class="container">
                     <div class="contact-form__row">
                         <div class="contact-form__left-col">
                             <div class="contact-form__sphere">
-                                <img src="img/sphere-large.jpg" alt="" class="contact-form__sphere-image">
+                                <div class="contact-form__sphere-container">
+                                    <video class="lazyload" muted="" data-autoplay="" loop playsinline
+                                        data-poster="img/video-poster.jpg" preload="none">
+                                        <source src="assets/videos/video.mp4" type="video/mp4" />
+                                    </video>
+                                </div>
+
                             </div>
                         </div>
                         <div class="contact-form__right-col">
                             <h2 class="contact-form__heading">
                                 How can we help you?
                             </h2>
-                            <form action="/" method="POST" class="contact-form__form" data-need-validation>
+                            <form action="/" method="POST" class="contact-form__form" data-need-validation
+                                id="contact-form">
                                 <div class="contact-form__form-input-wrapper">
                                     <input type="text" class="contact-form__form-input" id="firstname"
                                         placeholder="First name" autocomplete="not" required>
@@ -186,7 +199,10 @@
                                     <div class="contact-form__custom-select">
 
 
-                                        <select name="whoare" class="js-custom-select" required data-parsley-class-handler="#whoare-wrapper" data-parsley-errors-container="#whoare-wrapper" data-parsley-trigger="change">
+                                        <select name="whoare" class="js-custom-select" required
+                                            data-parsley-class-handler="#whoare-wrapper"
+                                            data-parsley-errors-container="#whoare-wrapper"
+                                            data-parsley-trigger="change">
                                             <option value="" placeholder>
                                                 Who are you?
                                             </option>
@@ -234,20 +250,45 @@
                                 </div>
 
                                 <button type="submit" class="contact-form__form-submit">Send</button>
-                                <label class="contact-form__checkbox">
-                                    <input type="checkbox" name="policy" class="contact-form__checkbox-input" value="Y"
-                                        checked>
-                                    <span class="contact-form__checkbox-mark">
+                                <div
+                                    class="contact-form__form-input-wrapper contact-form__form-input-wrapper--centered">
+                                    <label class="contact-form__checkbox">
+                                        <input type="checkbox" name="policy" class="contact-form__checkbox-input"
+                                            value="Y" checked required>
+                                        <span class="contact-form__checkbox-mark">
 
-                                    </span>
-                                    I give on data submission
-                                </label>
+                                        </span>
+                                        I give on data submission
+                                    </label>
+                                </div>
+
                             </form>
                         </div>
                     </div>
 
                 </div>
             </div>
+            <div class="contact-form__success">
+                <div class="contact-form__success-sphere">
+                    <video class="lazyload" muted="" data-autoplay="" loop playsinline
+                        data-poster="img/video-poster.jpg" preload="none">
+                        <source src="assets/videos/video.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="contact-form__success-content">
+                    <h3 class="contact-form__success-heading">
+                        Thank you, your<br> application has been sent
+                    </h3>
+                    <a href="#" class="contact-form__success-back-link">
+                        Home page
+                    </a>
+                </div>
+            </div>
+            <button class="contact-form__close-btn js-form-close">
+                <svg width="14" height="14" aria-hidden="true" class="icon icon-cross">
+                    <use xlink:href="#cross" />
+                </svg>
+            </button>
         </div>
         {{> header }}
 
@@ -260,6 +301,7 @@
         {{> footer }}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/app.js"></script>
+        <script src="assets/js/backend.js"></script>
     </div>
 </body>
 

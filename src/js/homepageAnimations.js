@@ -154,7 +154,7 @@ export default function HomepageAnimations() {
 
     const questions = Array.from(document.querySelectorAll('.questions__item'));
 
-    if (questions.length && !window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
+    if (questions.length) {
         const container = document.querySelector('.questions__items');
         const timeline = gsap.timeline({
             scrollTrigger: {
@@ -173,7 +173,7 @@ export default function HomepageAnimations() {
                 timeline.to(
                     question,
                     {
-                        xPercent: 15,
+                        xPercent: window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches ? 10 : 15,
                         ease: 'none'
                     },
                     0
@@ -182,7 +182,7 @@ export default function HomepageAnimations() {
                 timeline.to(
                     question,
                     {
-                        xPercent: -15,
+                        xPercent: window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches ? -10 : -15,
                         ease: 'none'
                     },
                     0
@@ -229,11 +229,12 @@ export default function HomepageAnimations() {
             timeline = gsap.timeline({
                 scrollTrigger: {
                     start: 'bottom bottom',
-                    end: '+=200%',
+                    end: '+=150%',
                     scrub: 1,
                     trigger: howItWorksContainer,
                     pin: true,
                     pinSpacing: true,
+                    // snap: 'labels',
                     snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels'
                 }
             });
@@ -246,6 +247,7 @@ export default function HomepageAnimations() {
                     trigger: howItWorksContainer,
                     pin: true,
                     pinSpacing: true,
+                    // snap: 'labels',
                     snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels'
                 }
             });
@@ -257,10 +259,10 @@ export default function HomepageAnimations() {
         const secondTextBlock = howItWorksItems[1].querySelector('.how-it-works__item-text-block');
 
         const thirdPhoneImage = howItWorksItems[2].querySelector('.how-it-works__item-image--phone');
-       
 
         if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
             timeline
+                .addLabel('firstStep', 0)
                 .to(howItWorksItems[0], {
                     autoAlpha: 0,
                     duration: 1

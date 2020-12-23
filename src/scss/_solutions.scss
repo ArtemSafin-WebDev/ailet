@@ -49,7 +49,7 @@
 
 .solutions__row {
     display: flex;
-    align-items: center;
+    
     position: relative;
     z-index: 30;
     @include breakpoint(mobile) {
@@ -73,12 +73,13 @@
     width: 73rem;
     flex-shrink: 0;
     margin-left: 10rem;
-
+    padding-top: 15rem;
 
     @include breakpoint(mobile) {
         width: 100%;
         flex-shrink: 1;
         margin: 0;
+        padding-top: 0;
     }
 }
 
