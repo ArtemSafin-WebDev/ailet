@@ -15,6 +15,7 @@ export default function HomepageAnimations() {
     const pageHeader = document.querySelector('.page-header');
     const pageHeaderRightCol = document.querySelector('.page-header__right-col');
 
+    const logoWrapper = document.querySelector('.page-header__logo');
     const logo = document.querySelector('.page-header__logo-image:not(.page-header__logo-image--white)');
     const logoWhite = document.querySelector('.page-header__logo-image--white');
 
@@ -36,18 +37,16 @@ export default function HomepageAnimations() {
                 });
             });
         } else {
-            intro.classList.add('remove-transform')
+            intro.classList.add('remove-transform');
             gsap.set(intro, {
                 xPercent: 100
             });
-
-            
 
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     start: 'top top',
 
-                    end: () => `+=${intro.offsetHeight}`,
+                    end: '+=150%',
                     scrub: 1,
                     trigger: intro,
                     pin: intro,
@@ -56,10 +55,14 @@ export default function HomepageAnimations() {
             });
 
             timeline
-                .fromTo(intro, {xPercent: 100}, {
-                    xPercent: 0,
-                    duration: 1
-                })
+                .fromTo(
+                    intro,
+                    { xPercent: 100 },
+                    {
+                        xPercent: 0,
+                        duration: 1
+                    }
+                )
                 .to(
                     sideScreen,
                     {
@@ -99,7 +102,7 @@ export default function HomepageAnimations() {
             const headerTl = gsap.timeline({
                 scrollTrigger: {
                     start: 'top top',
-                    end: '+=100%',
+                    end: '+=150%',
                     scrub: 1,
                     trigger: intro,
                     pin: pageHeader,
@@ -108,6 +111,7 @@ export default function HomepageAnimations() {
             });
 
             headerTl
+               
                 .to(
                     logoWhite,
                     {
@@ -128,7 +132,7 @@ export default function HomepageAnimations() {
                     pageHeaderRightCol,
                     {
                         autoAlpha: 1,
-                        duration: 0.2
+                        duration: 0.1
                     },
                     0
                 );
@@ -141,12 +145,16 @@ export default function HomepageAnimations() {
                         duration: 2,
                         ease: 'power2.out',
                         scrollTo: {
-                            y: intro.offsetHeight / 3.4,
+                            y: window.innerHeight / 2.4,
                             autoKill: true
+                        },
+                        onComplete: () => {
+                            document.body.classList.add('logo-shown');
+                        },
+                        onInterrupt: () => {
+                            console.log('Animation interrupted');
+                            document.body.classList.add('logo-shown');
                         }
-                        // onComplete: () => {
-                        //     document.documentElement.classList.add('scroll-allowed');
-                        // }
                     });
                 }, 400);
             });
@@ -232,7 +240,7 @@ export default function HomepageAnimations() {
             timeline = gsap.timeline({
                 scrollTrigger: {
                     start: 'bottom bottom',
-                    end: '+=150%',
+                    end: '+=300%',
                     scrub: 1,
                     trigger: howItWorksContainer,
                     pin: true,

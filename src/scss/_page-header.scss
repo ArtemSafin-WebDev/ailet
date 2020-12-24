@@ -50,10 +50,10 @@
     opacity: 0;
     transition: opacity .5s;
 
-    .animatable & {
+    
+    .logo-shown & {
         opacity: 1;
     }
-
     .menu-shown & {
         opacity: 1;
     }

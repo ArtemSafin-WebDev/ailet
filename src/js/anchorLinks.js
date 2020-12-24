@@ -21,7 +21,7 @@ export default function AnchorLinks() {
                         ease: 'power2.out',
                         scrollTo: {
                             y: elementToScroll,
-                            autoKill: true
+                            autoKill: false
                         }
                     });
                 }
