@@ -2510,7 +2510,11 @@ select:-webkit-autofill:focus {
   position: relative;
   border-radius: 50%;
   overflow: hidden;
-  background-color: var(--primary-color); }
+  background-color: var(--primary-color);
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden; }
   .solutions__images-container::after {
     content: '';
     display: block;
@@ -2531,7 +2535,11 @@ select:-webkit-autofill:focus {
   -webkit-transition: opacity .3s ease .3s, visibility 0s linear .6s;
   transition: opacity .3s ease .3s, visibility 0s linear .6s;
   opacity: 0;
-  visibility: hidden; }
+  visibility: hidden;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden; }
   .solutions__image.active {
     z-index: 20;
     opacity: 1;
