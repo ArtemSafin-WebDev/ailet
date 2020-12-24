@@ -60,12 +60,16 @@
 
     @include breakpoint(tablet) {
         opacity: 1;
+        align-self: initial;
     }
 }
 
 .page-header__logo-image {
     display: block;
     width: 7.6rem;
+
+
+    width: 14rem;
 
     &--white {
         position: absolute;
@@ -81,7 +85,7 @@
     }
 
     @include breakpoint(mobile) {
-        width: 5rem;
+        width: 10rem;
     }
 }
 
