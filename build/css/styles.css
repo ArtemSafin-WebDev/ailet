@@ -2127,7 +2127,17 @@ select:-webkit-autofill:focus {
           align-items: center;
   grid-gap: 8rem;
   padding: 9.5rem 0;
-  width: 100%; }
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); }
+  .how-it-works__item:first-child {
+    opacity: 1;
+    visibility: inherit; }
   @media only screen and (max-width: 968px) {
     .how-it-works__item {
       display: -webkit-box;

@@ -1,51 +1,46 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { MOBILE_WIDTH, SMALL_TABLET, TABLET_WIDTH } from './constants';
-import { debounce } from 'lodash';
+import { TABLET_WIDTH } from './constants';
+
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 export default function HomepageAnimations() {
     const sideScreen = document.querySelector('.side-screen');
-    const mainContent = document.querySelector('.page-content');
+
     const sideScreenInner = document.querySelector('.side-screen-inner');
     const shape = document.querySelector('.intro__shape-image');
     const intro = document.querySelector('.intro');
     const pageHeader = document.querySelector('.page-header');
     const pageHeaderRightCol = document.querySelector('.page-header__right-col');
-
-    const logoWrapper = document.querySelector('.page-header__logo');
+    const questionsContainer = document.querySelector('.questions__items');
+    const questions = Array.from(document.querySelectorAll('.questions__item'));
+    const howItWorksItems = Array.from(document.querySelectorAll('.how-it-works__item'));
+    const howItWorksContainer = document.querySelector('.how-it-works__items');
+    const firstTextBlock = howItWorksItems[0].querySelector('.how-it-works__item-text-block');
+    const secondPhoneImage = howItWorksItems[1].querySelector('.how-it-works__item-image--phone');
+    const secondTextBlock = howItWorksItems[1].querySelector('.how-it-works__item-text-block');
+    const thirdPhoneImage = howItWorksItems[2].querySelector('.how-it-works__item-image--phone');
+    const benefits = document.querySelector('.why-ailet__benefits');
+    const columns = Array.from(document.querySelectorAll('.why-ailet__benefits-col'));
     const logo = document.querySelector('.page-header__logo-image:not(.page-header__logo-image--white)');
     const logoWhite = document.querySelector('.page-header__logo-image--white');
+    const clientsSlidersContainer = document.querySelector('.clients__sliders');
+    const clientsSliders = Array.from(document.querySelectorAll('.clients__slider'));
 
-    if (sideScreen && mainContent && sideScreenInner) {
-        console.log('Main screen animation');
+    ScrollTrigger.saveStyles(
+        '.page-header, .side-screen, .side-screen-inner, .questions__items, .questions__item, .intro, .intro__shape-image, .page-header__right-col, .page-header__logo-image:not(.page-header__logo-image--white), .page-header__logo-image--white, .how-it-works__item, .how-it-works__items, .how-it-works__item-text-block, .how-it-works__item-image--phone, .why-ailet__benefits, .why-ailet__benefits-col, .clients__sliders, .clients__slider'
+    );
 
-        if (window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches) {
-            const timeline = gsap.timeline();
-
-            window.addEventListener('load', () => {
-                timeline.to(sideScreen, {
-                    duration: 0.6,
-                    delay: 0.6,
-                    ease: 'power2.easeOut',
-                    xPercent: -100,
-                    onComplete: () => {
-                        document.documentElement.classList.add('scroll-allowed');
-                    }
-                });
-            });
-        } else {
+    ScrollTrigger.matchMedia({
+        '(min-width: 1025px)': function() {
             intro.classList.add('remove-transform');
-            gsap.set(intro, {
-                xPercent: 100
-            });
 
             const timeline = gsap.timeline({
                 scrollTrigger: {
                     start: 'top top',
-
+                    refreshPriority: 15,
                     end: '+=150%',
                     scrub: 1,
                     trigger: intro,
@@ -88,17 +83,6 @@ export default function HomepageAnimations() {
                     0.5
                 );
 
-            gsap.set(logo, {
-                autoAlpha: 0
-            });
-            gsap.set(logoWhite, {
-                autoAlpha: 1
-            });
-
-            gsap.set(pageHeaderRightCol, {
-                autoAlpha: 0
-            });
-
             const headerTl = gsap.timeline({
                 scrollTrigger: {
                     start: 'top top',
@@ -106,30 +90,39 @@ export default function HomepageAnimations() {
                     scrub: 1,
                     trigger: intro,
                     pin: pageHeader,
-                    pinSpacing: false
+                    pinSpacing: false,
+                    refreshPriority: 15
                 }
             });
 
             headerTl
-               
-                .to(
+                .fromTo(
                     logoWhite,
+                    {
+                        autoAlpha: 1
+                    },
                     {
                         autoAlpha: 0,
                         duration: 0.2
                     },
                     0.3
                 )
-                .to(
+                .fromTo(
                     logo,
+                    {
+                        autoAlpha: 0
+                    },
                     {
                         autoAlpha: 1,
                         duration: 0.2
                     },
                     0.3
                 )
-                .to(
+                .fromTo(
                     pageHeaderRightCol,
+                    {
+                        autoAlpha: 0
+                    },
                     {
                         autoAlpha: 1,
                         duration: 0.1
@@ -137,9 +130,8 @@ export default function HomepageAnimations() {
                     0
                 );
 
-            window.addEventListener('load', () => {
+            const loadHandler = () => {
                 document.documentElement.classList.add('scroll-allowed');
-
                 setTimeout(() => {
                     gsap.to(window, {
                         duration: 2,
@@ -152,126 +144,65 @@ export default function HomepageAnimations() {
                             document.body.classList.add('logo-shown');
                         },
                         onInterrupt: () => {
-                            console.log('Animation interrupted');
+                           
                             document.body.classList.add('logo-shown');
                         }
                     });
                 }, 400);
-            });
-        }
+            };
 
-        // gsap.to(window, {duration: 2, scrollTo: {y: window.innerHeight * 0.27, autoKill: false}, ease: "none"});
-    }
+            window.addEventListener('load', loadHandler);
 
-    const questions = Array.from(document.querySelectorAll('.questions__item'));
+            return function() {
+                timeline.kill();
+                headerTl.kill();
+                window.removeEventListener('load', loadHandler);
+                intro.classList.remove('remove-transform');
+            };
+        },
 
-    if (questions.length) {
-        const container = document.querySelector('.questions__items');
-        const timeline = gsap.timeline({
-            scrollTrigger: {
-                start: 'top bottom',
-                end: 'bottom top',
-                markers: false,
-                scrub: 1,
-                trigger: container
+        '(max-width: 1024px)': function() {
+            const timeline = gsap.timeline();
+
+            const loadHandler = () => {
+                timeline.to(sideScreen, {
+                    duration: 0.6,
+                    delay: 0.6,
+                    ease: 'power2.easeOut',
+                    xPercent: -100,
+                    onComplete: () => {
+                        document.documentElement.classList.add('scroll-allowed');
+                    }
+                });
+            };
+
+            if (document.body.classList.contains('loaded')) {
+              
+                loadHandler();
             }
-        });
 
-        questions.forEach((question, questionIndex) => {
-            const isEven = questionIndex % 2 == 0;
+            window.addEventListener('load', loadHandler);
 
-            if (isEven) {
-                timeline.to(
-                    question,
-                    {
-                        xPercent: window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches ? 10 : 15,
-                        ease: 'none'
-                    },
-                    0
-                );
-            } else {
-                timeline.to(
-                    question,
-                    {
-                        xPercent: window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches ? -10 : -15,
-                        ease: 'none'
-                    },
-                    0
-                );
-            }
-        });
-    }
+            return function() {
+                timeline.kill();
+                window.removeEventListener('load', loadHandler);
+            };
+        },
 
-    const howItWorks = document.querySelector('.how-it-works');
-    const howItWorksItems = Array.from(document.querySelectorAll('.how-it-works__item'));
-    const howItWorksContainer = document.querySelector('.how-it-works__items');
-
-    if (howItWorksItems.length) {
-        const maxHeight = Math.max(
-            ...howItWorksItems.map(item => {
-                const height = item.offsetHeight;
-                console.log(item, height);
-                return height;
-            })
-        );
-        howItWorksItems.forEach(item => {
-            gsap.set(item, {
-                position: 'absolute',
-                left: 0,
-                top: '50%',
-                yPercent: -50,
-                autoAlpha: 0
-            });
-        });
-
-        gsap.set(howItWorksItems[0], {
-            autoAlpha: 1
-        });
-
-        console.log('Max height', maxHeight);
-
-        gsap.set(howItWorksContainer, {
-            height: maxHeight
-        });
-
-        let timeline = null;
-
-        if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
-            timeline = gsap.timeline({
+        '(min-width: 641px)': function() {
+            const timeline = gsap.timeline({
                 scrollTrigger: {
                     start: 'bottom bottom',
                     end: '+=300%',
                     scrub: 1,
                     trigger: howItWorksContainer,
                     pin: true,
-                    pinSpacing: true,
-                    // snap: 'labels',
-                    snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels'
+                    pinSpacing: true, 
+                    snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels',
+                    refreshPriority: 10
                 }
             });
-        } else {
-            timeline = gsap.timeline({
-                scrollTrigger: {
-                    start: 'top top',
-                    end: '+=100%',
-                    scrub: 1,
-                    trigger: howItWorksContainer,
-                    pin: true,
-                    pinSpacing: true,
-                    // snap: 'labels',
-                    snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels'
-                }
-            });
-        }
 
-        const firstTextBlock = howItWorksItems[0].querySelector('.how-it-works__item-text-block');
-
-        const secondPhoneImage = howItWorksItems[1].querySelector('.how-it-works__item-image--phone');
-        const secondTextBlock = howItWorksItems[1].querySelector('.how-it-works__item-text-block');
-
-        const thirdPhoneImage = howItWorksItems[2].querySelector('.how-it-works__item-image--phone');
-
-        if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
             timeline
                 .addLabel('firstStep', 0)
                 .to(howItWorksItems[0], {
@@ -332,7 +263,63 @@ export default function HomepageAnimations() {
                     '<'
                 )
                 .addLabel('thirdStep', '>');
-        } else {
+
+            if (columns[0]) {
+                gsap.to(columns[0], {
+                    y: 100,
+
+                    scrollTrigger: {
+                        scrub: 1,
+                        trigger: benefits,
+                        start: 'top center',
+                        end: 'bottom top',
+                        refreshPriority: 8
+                    }
+                });
+            }
+            if (columns[1]) {
+                gsap.to(columns[1], {
+                    y: -70,
+
+                    scrollTrigger: {
+                        scrub: 1,
+                        trigger: benefits,
+                        start: 'top center',
+                        end: 'bottom top',
+                        refreshPriority: 8
+                    }
+                });
+            }
+
+
+            clientsSliders.forEach((element, elementIndex) => {
+                gsap.to(element, {
+                    x: elementIndex % 2 == 0 ? -300 : 300,
+                    scrollTrigger: {
+                        trigger: clientsSlidersContainer,
+                        scrub: 1,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        refreshPriority: 6
+                    }
+                });
+            });
+        },
+
+        '(max-width: 640px)': function() {
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    start: 'top top',
+                    end: '+=100%',
+                    scrub: 1,
+                    trigger: howItWorksContainer,
+                    pin: true,
+                    pinSpacing: true,
+                    refreshPriority: 10,
+                    snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels'
+                }
+            });
+
             timeline
                 .to(howItWorksItems[0], {
                     autoAlpha: 0,
@@ -356,70 +343,47 @@ export default function HomepageAnimations() {
                 })
 
                 .addLabel('thirdStep', '>');
-        }
+        },
 
-        window.addEventListener(
-            'resize',
-            debounce(() => {
-                const maxHeight = Math.max(
-                    ...howItWorksItems.map(item => {
-                        const height = item.offsetHeight;
-                        console.log(item, height);
-                        return height;
-                    })
-                );
-
-                gsap.set(howItWorksContainer, {
-                    height: maxHeight
-                });
-            }, 300)
-        );
-    }
-
-    const benefits = document.querySelector('.why-ailet__benefits');
-    if (!window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches && benefits) {
-        const columns = Array.from(document.querySelectorAll('.why-ailet__benefits-col'));
-
-        if (columns[0]) {
-            gsap.to(columns[0], {
-                y: 100,
-
+        all: function() {
+            const questionsTimeline = gsap.timeline({
                 scrollTrigger: {
-                    scrub: 1,
-                    trigger: benefits,
-                    start: 'top center',
-                    end: 'bottom top'
-                }
-            });
-        }
-        if (columns[1]) {
-            gsap.to(columns[1], {
-                y: -70,
-
-                scrollTrigger: {
-                    scrub: 1,
-                    trigger: benefits,
-                    start: 'top center',
-                    end: 'bottom top'
-                }
-            });
-        }
-    }
-
-    const clientsSlidersContainer = document.querySelector('.clients__sliders');
-    const clientsSliders = Array.from(document.querySelectorAll('.clients__slider'));
-
-    if (clientsSlidersContainer && clientsSliders.length && !window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
-        clientsSliders.forEach((element, elementIndex) => {
-            gsap.to(element, {
-                x: elementIndex % 2 == 0 ? -300 : 300,
-                scrollTrigger: {
-                    trigger: clientsSlidersContainer,
-                    scrub: 1,
                     start: 'top bottom',
-                    end: 'bottom top'
+                    end: 'bottom top',
+                    markers: false,
+                    scrub: 1,
+                    trigger: questionsContainer,
+                    refreshPriority: 12
                 }
             });
-        });
-    }
+
+            questions.forEach((question, questionIndex) => {
+                const isEven = questionIndex % 2 == 0;
+
+                if (isEven) {
+                    questionsTimeline.to(
+                        question,
+                        {
+                            xPercent: 15,
+                            ease: 'none'
+                        },
+                        0
+                    );
+                } else {
+                    questionsTimeline.to(
+                        question,
+                        {
+                            xPercent: -15,
+                            ease: 'none'
+                        },
+                        0
+                    );
+                }
+            });
+        }
+    });
+
+    
+
+    
 }

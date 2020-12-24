@@ -38,6 +38,19 @@
     padding: 9.5rem 0;
     width: 100%;
 
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%);
+
+    &:first-child {
+        opacity: 1;
+        visibility: inherit;
+    }
+
     @include breakpoint(small-tablet) {
         display: flex;
         flex-direction: column;
