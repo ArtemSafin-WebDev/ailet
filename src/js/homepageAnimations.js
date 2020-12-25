@@ -3,7 +3,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { TABLET_WIDTH } from './constants';
 
-
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 export default function HomepageAnimations() {
@@ -130,64 +129,15 @@ export default function HomepageAnimations() {
                     0
                 );
 
-            const loadHandler = () => {
-                document.documentElement.classList.add('scroll-allowed');
-                setTimeout(() => {
-                    gsap.to(window, {
-                        duration: 2,
-                        ease: 'power2.out',
-                        scrollTo: {
-                            y: window.innerHeight / 2.4,
-                            autoKill: true
-                        },
-                        onComplete: () => {
-                            document.body.classList.add('logo-shown');
-                        },
-                        onInterrupt: () => {
-                           
-                            document.body.classList.add('logo-shown');
-                        }
-                    });
-                }, 400);
-            };
-
-            window.addEventListener('load', loadHandler);
-
             return function() {
                 timeline.kill();
                 headerTl.kill();
-                window.removeEventListener('load', loadHandler);
+
                 intro.classList.remove('remove-transform');
             };
         },
 
-        '(max-width: 1024px)': function() {
-            const timeline = gsap.timeline();
-
-            const loadHandler = () => {
-                timeline.to(sideScreen, {
-                    duration: 0.6,
-                    delay: 0.6,
-                    ease: 'power2.easeOut',
-                    xPercent: -100,
-                    onComplete: () => {
-                        document.documentElement.classList.add('scroll-allowed');
-                    }
-                });
-            };
-
-            if (document.body.classList.contains('loaded')) {
-              
-                loadHandler();
-            }
-
-            window.addEventListener('load', loadHandler);
-
-            return function() {
-                timeline.kill();
-                window.removeEventListener('load', loadHandler);
-            };
-        },
+       
 
         '(min-width: 641px)': function() {
             const timeline = gsap.timeline({
@@ -197,7 +147,7 @@ export default function HomepageAnimations() {
                     scrub: 1,
                     trigger: howItWorksContainer,
                     pin: true,
-                    pinSpacing: true, 
+                    pinSpacing: true,
                     snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels',
                     refreshPriority: 10
                 }
@@ -291,7 +241,6 @@ export default function HomepageAnimations() {
                 });
             }
 
-
             clientsSliders.forEach((element, elementIndex) => {
                 gsap.to(element, {
                     x: elementIndex % 2 == 0 ? -300 : 300,
@@ -383,7 +332,43 @@ export default function HomepageAnimations() {
         }
     });
 
-    
+  
 
-    
+    const loadHandler = () => {
+        if (window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches) {
+            const timeline = gsap.timeline();
+            timeline.to(sideScreen, {
+                duration: 0.6,
+                delay: 0.6,
+                ease: 'power2.easeOut',
+                xPercent: -100,
+                onComplete: () => {
+                    document.documentElement.classList.add('scroll-allowed');
+                    document.body.classList.add('intro-animation-finished');
+                }
+            });
+        } else {
+            document.documentElement.classList.add('scroll-allowed');
+            setTimeout(() => {
+                gsap.to(window, {
+                    duration: 2,
+                    ease: 'power2.out',
+                    scrollTo: {
+                        y: window.innerHeight / 2.4,
+                        autoKill: true
+                    },
+                    onComplete: () => {
+                        document.body.classList.add('logo-shown');
+                        document.body.classList.add('intro-animation-finished');
+                    },
+                    onInterrupt: () => {
+                        document.body.classList.add('logo-shown');
+                        document.body.classList.add('intro-animation-finished');
+                    }
+                });
+            }, 400);
+        }
+    };
+
+    window.addEventListener('load', loadHandler);
 }

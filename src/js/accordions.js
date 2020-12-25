@@ -11,17 +11,16 @@ export default function Accordions() {
             event.preventDefault();
             const content = accordion.querySelector('.solutions__accordion-content');
 
-
             images.forEach(image => image.classList.remove('active'));
 
             if (images[activeIndex]) {
-                images[activeIndex].classList.add('active')
+                images[activeIndex].classList.add('active');
             }
 
             accordions.forEach(otherAccordion => {
                 if (otherAccordion !== accordion && otherAccordion.classList.contains('active')) {
                     const content = otherAccordion.querySelector('.solutions__accordion-content');
-                    otherAccordion.classList.remove('active')
+                    otherAccordion.classList.remove('active');
                     gsap.to(content, {
                         height: 0,
                         duration: 0.4,
@@ -48,16 +47,35 @@ export default function Accordions() {
         });
     });
 
+    const mediaQueryList = window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`);
 
-    if (accordions.length && !window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`).matches) {
-        accordions[0].classList.add('active');
-        images[0].classList.add('active');
-        const content = accordions[0].querySelector('.solutions__accordion-content');
+    function screenTest(e) {
+        if (e.matches) {
+            accordions.forEach(otherAccordion => {
+                if (otherAccordion.classList.contains('active')) {
+                    const content = otherAccordion.querySelector('.solutions__accordion-content');
+                    otherAccordion.classList.remove('active');
+                    gsap.set(content, {
+                        height: 0
+                    });
+                }
+            });
 
-        gsap.set(content, {
-            height: 'auto'
-        })
+            ScrollTrigger.refresh();
+        } else {
+            if (accordions.length) {
+                accordions[0].classList.add('active');
+                images[0].classList.add('active');
+                const content = accordions[0].querySelector('.solutions__accordion-content');
 
-        ScrollTrigger.refresh();
+                gsap.set(content, {
+                    height: 'auto'
+                });
+
+                ScrollTrigger.refresh();
+            }
+        }
     }
+
+    mediaQueryList.addListener(screenTest);
 }
