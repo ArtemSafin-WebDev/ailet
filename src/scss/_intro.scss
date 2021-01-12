@@ -185,6 +185,7 @@
     @include breakpoint(mobile) {
         border-top: 1px solid #0f001e;
         padding-top: 2rem;
+        border: none;
     
     }
 }

@@ -40,6 +40,17 @@
     pointer-events: none;
     object-fit: cover;
     object-position: right center;
+
+
+    @include breakpoint(mobile) {
+        top: auto;
+        left: auto;
+        right: 0;
+        bottom: -16rem;
+        width: 140rem;
+        max-width: none;
+        height: auto;
+    }
 }
 
 .page-footer__content {
@@ -85,7 +96,7 @@
     margin-bottom: 22rem;
 
     @include breakpoint(mobile) {
-        margin-bottom: 5rem;
+        margin-bottom: 24rem;
         grid-template-columns: repeat(1, minmax(0, 1fr));
         grid-gap: 4rem;
     }

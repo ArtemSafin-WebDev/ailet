@@ -32,9 +32,11 @@
     transform: translate(-50%, -50%);
     width: 112rem;
     pointer-events: none;
-
+    max-width: none;
     @include breakpoint(mobile) {
-        display: none;
+        width: 40rem;
+       
+        // display: none;
     }
 }
 
