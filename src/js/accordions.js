@@ -78,4 +78,7 @@ export default function Accordions() {
     }
 
     mediaQueryList.addListener(screenTest);
+
+
+    screenTest(mediaQueryList);
 }

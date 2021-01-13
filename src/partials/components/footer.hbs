@@ -1,5 +1,28 @@
 <footer class="page-footer" id="contacts">
-    <img src="img/page-footer-bg.jpg" alt="" class="page-footer__bg">
+    <div class="page-footer__bg">
+        <div class="page-footer__bg-layer">
+            <img src="img/maps/map-1.jpg" alt="" class="page-footer__bg-layer-image">
+            <a href="#" class="page-footer__bg-pin" style="top: 45%; right: 20%;">
+                <svg width="14" height="14" aria-hidden="true" class="icon icon-pin">
+                    <use xlink:href="#pin" />
+                </svg>
+            </a>
+            <a href="#" class="page-footer__bg-pin" style="top: 52%; right: 12%;">
+                <svg width="14" height="14" aria-hidden="true" class="icon icon-pin">
+                    <use xlink:href="#pin" />
+                </svg>
+            </a>
+        </div>
+        <div class="page-footer__bg-layer" data-map-layer="us">
+            <img src="img/maps/map-2.jpg" alt="" class="page-footer__bg-layer-image">
+            <a href="#" class="page-footer__bg-pin" style="top: 68%; right: 25%;">
+                <svg width="14" height="14" aria-hidden="true" class="icon icon-pin">
+                    <use xlink:href="#pin" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
     <div class="container">
         <div class="page-footer__content">
             <div class="page-footer__logo">
@@ -10,7 +33,10 @@
             <div class="page-footer__contacts">
                 <div class="page-footer__contacts-item">
                     <h4 class="page-footer__contacts-heading">
-                        US HQ
+                        <a href="#" data-toggle-map-layer="us">
+                            US HQ
+                        </a>
+
                     </h4>
                     <div class="page-footer__contacts-text">
                         9 The Green, Ste A, City of Dover County of Kent, zip code 19901, Delaware, the United States
@@ -32,7 +58,8 @@
                         Office EU
                     </h4>
                     <div class="page-footer__contacts-text">
-                        Pasilankatu 2, 00240 Helsinki, Finland <a href="tel:+358 (0) 9 3158 9580">+358&nbsp;(0)&nbsp;9&nbsp;3158
+                        Pasilankatu 2, 00240 Helsinki, Finland <a
+                            href="tel:+358 (0) 9 3158 9580">+358&nbsp;(0)&nbsp;9&nbsp;3158
                             9580</a>
                     </div>
                 </div>

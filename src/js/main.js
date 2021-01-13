@@ -7,7 +7,7 @@ import Menu from './menu';
 import AnchorLinks from './anchorLinks';
 import CustomSelects from './customSelects';
 import Validation from './validation';
-
+import ContactMap from './map';
 
 
 
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     AnchorLinks();
     CustomSelects();
     Validation();
+    ContactMap();
 });
 
 window.addEventListener('load', function() {
