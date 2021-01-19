@@ -366,7 +366,7 @@ export default function HomepageAnimations() {
                         document.body.classList.add('intro-animation-finished');
                     }
                 });
-            }, 400);
+            }, 1600);
         }
     };
 
