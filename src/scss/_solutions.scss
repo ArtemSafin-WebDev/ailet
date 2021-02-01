@@ -84,7 +84,7 @@
 }
 
 .solutions__images {
-    margin-left: -38rem;
+    
     @include breakpoint(mobile) {
         margin: 0;
     }
