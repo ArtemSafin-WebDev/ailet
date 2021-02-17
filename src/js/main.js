@@ -8,6 +8,7 @@ import AnchorLinks from './anchorLinks';
 import CustomSelects from './customSelects';
 import Validation from './validation';
 import ContactMap from './map';
+import KeyScrolling from './keyScrolling';
 
 
 
@@ -23,9 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
     CustomSelects();
     Validation();
     ContactMap();
+   
 });
 
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
     setTimeout(() => document.body.classList.add('animatable'), 300);
+    KeyScrolling();
 });
