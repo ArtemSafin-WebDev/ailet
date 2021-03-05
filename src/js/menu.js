@@ -25,6 +25,9 @@ export default function Menu() {
         disableBodyScroll(menu, {
             reserveScrollBarGap: true,
         })
+        const event = new CustomEvent('menuopen');
+
+        document.dispatchEvent(event);
     }
 
     const closeMenu = () => {
@@ -32,6 +35,10 @@ export default function Menu() {
         document.body.classList.remove('menu-shown');
         // unlockScroll()
         clearAllBodyScrollLocks();
+
+        const event = new CustomEvent('menuclose');
+
+        document.dispatchEvent(event);
     }
     if (menu && menuBtn) {
         console.log('Menu code')
@@ -68,6 +75,10 @@ export default function Menu() {
         disableBodyScroll(formMenu, {
             reserveScrollBarGap: true,
         })
+
+        const event = new CustomEvent('formopen');
+
+        document.dispatchEvent(event);
     }
     const closeFormMenu = () => {
         document.body.classList.remove('contact-form-shown');
@@ -75,6 +86,10 @@ export default function Menu() {
         // unlockScroll()
 
         clearAllBodyScrollLocks();
+
+        const event = new CustomEvent('formclose');
+
+        document.dispatchEvent(event);
     }
 
 

@@ -9,6 +9,7 @@ import CustomSelects from './customSelects';
 import Validation from './validation';
 import ContactMap from './map';
 import KeyScrolling from './keyScrolling';
+import VideoController from './videoControllet';
 
 
 
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     CustomSelects();
     Validation();
     ContactMap();
+    VideoController();
    
 });
 
