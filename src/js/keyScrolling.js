@@ -19,16 +19,16 @@ export default function KeyScrolling() {
 
             if (debug) console.log('Position for block', block, blockPos)
 
-          
-            if (block.classList.contains('how-it-works')) {
-                const items = Array.from(block.querySelectorAll('.how-it-works__item'));
-                const itemsPositions = items.map((item, itemIndex) => blockPos + itemIndex * window.innerHeight * 1.5);
-                if (debug) console.log('Item positions', itemsPositions)
-                positions = positions.concat(itemsPositions);
+            positions.push(blockPos);
+            // if (block.classList.contains('how-it-works')) {
+            //     const items = Array.from(block.querySelectorAll('.how-it-works__item'));
+            //     const itemsPositions = items.map((item, itemIndex) => blockPos + itemIndex * window.innerHeight * 1.5);
+            //     if (debug) console.log('Item positions', itemsPositions)
+            //     positions = positions.concat(itemsPositions);
                 
-            } else {
-                positions.push(blockPos);
-            }
+            // } else {
+            //     positions.push(blockPos);
+            // }
         });
 
         return positions.map(pos => Math.ceil(pos))

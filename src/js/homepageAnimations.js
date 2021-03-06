@@ -29,7 +29,7 @@ export default function HomepageAnimations() {
     const clientsSliders = Array.from(document.querySelectorAll('.clients__slider'));
 
     ScrollTrigger.saveStyles(
-        '.page-header, .side-screen, .side-screen-inner, .questions__items, .questions__item, .intro, .intro__shape-image, .page-header__right-col, .page-header__logo-image:not(.page-header__logo-image--white), .page-header__logo-image--white, .how-it-works__item, .how-it-works__items, .how-it-works__item-text-block, .how-it-works__item-image--phone, .why-ailet__benefits, .why-ailet__benefits-col, .clients__sliders, .clients__slider'
+        '.page-header, .side-screen, .side-screen-inner, .questions__items, .questions__item, .intro, .intro__shape-image, .page-header__right-col, .page-header__logo-image:not(.page-header__logo-image--white), .page-header__logo-image--white, .why-ailet__benefits, .why-ailet__benefits-col, .clients__sliders, .clients__slider'
     );
 
     ScrollTrigger.matchMedia({
@@ -137,40 +137,96 @@ export default function HomepageAnimations() {
             };
         },
 
-       
-
         '(min-width: 641px)': function() {
-            const timeline = gsap.timeline({
+            const firstVideo = howItWorksItems[0].querySelector('video');
+            let firstItemTimer = null;
+            const tl1 = gsap.timeline({
                 scrollTrigger: {
-                    start: 'bottom bottom',
-                    end: '+=300%',
-                    scrub: 1,
-                    trigger: howItWorksContainer,
-                    pin: true,
-                    pinSpacing: true,
-                    snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels',
-                    refreshPriority: 10
+                    start: 'top bottom-=20%',
+                    end: 'bottom bottom-=20%',
+                    trigger: howItWorksItems[0],
+                    toggleActions: 'play reverse play reverse',
+                    markers: false,
+                    onEnter: () => {
+                        if (firstItemTimer) {
+                            clearTimeout(firstItemTimer);
+                            firstItemTimer = null;
+                        }
+                        firstVideo.play();
+                    },
+                    onEnterBack: () => {
+                        if (firstItemTimer) {
+                            clearTimeout(firstItemTimer);
+                            firstItemTimer = null;
+                        }
+                        firstVideo.play();
+                    },
+                    onLeave: () => {
+                        firstItemTimer = setTimeout(() => {
+                            firstVideo.pause();
+                        }, 1000);
+                    },
+                    onLeaveBack: () => {
+                        firstItemTimer = setTimeout(() => {
+                            firstVideo.pause();
+                        }, 1000);
+                    }
                 }
             });
 
-            timeline
-                .addLabel('firstStep', 0)
-                .to(howItWorksItems[0], {
-                    autoAlpha: 0,
-                    duration: 1
-                })
-                .to(
-                    firstTextBlock,
-                    {
-                        duration: 1,
-                        yPercent: -100
-                    },
-                    '<'
-                )
-                .to(howItWorksItems[1], {
+            tl1.fromTo(
+                howItWorksItems[0],
+                { autoAlpha: 0 },
+                {
                     autoAlpha: 1,
                     duration: 1
-                })
+                }
+            );
+
+            const secondVideo = howItWorksItems[1].querySelector('video');
+            let secondItemTimer = null;
+            const tl2 = gsap.timeline({
+                scrollTrigger: {
+                    start: 'top bottom-=20%',
+                    end: 'bottom bottom-=20%',
+                    trigger: howItWorksItems[1],
+                    toggleActions: 'play reverse play reverse',
+                    markers: false,
+                    onEnter: () => {
+                        if (secondItemTimer) {
+                            clearTimeout(secondItemTimer);
+                            secondItemTimer = null;
+                        }
+                        secondVideo.play();
+                    },
+                    onEnterBack: () => {
+                        if (secondItemTimer) {
+                            clearTimeout(secondItemTimer);
+                            secondItemTimer = null;
+                        }
+                        secondVideo.play();
+                    },
+                    onLeave: () => {
+                        secondItemTimer = setTimeout(() => {
+                            secondVideo.pause();
+                        }, 1000);
+                    },
+                    onLeaveBack: () => {
+                        secondItemTimer = setTimeout(() => {
+                            secondVideo.pause();
+                        }, 1000);
+                    }
+                }
+            });
+
+            tl2.fromTo(
+                howItWorksItems[1],
+                { autoAlpha: 0 },
+                {
+                    autoAlpha: 1,
+                    duration: 1
+                }
+            )
                 .from(
                     secondPhoneImage,
                     {
@@ -186,33 +242,60 @@ export default function HomepageAnimations() {
                         yPercent: 100
                     },
                     '<'
-                )
-                .addLabel('secondStep', '>')
-                .to(howItWorksItems[1], {
-                    autoAlpha: 0,
-                    duration: 1
-                })
-                .to(
-                    secondTextBlock,
-                    {
-                        duration: 1,
-                        yPercent: -100
+                );
+
+            const thirdVideo = howItWorksItems[2].querySelector('video');
+            let thirdItemTimer = null;
+
+            const tl3 = gsap.timeline({
+                scrollTrigger: {
+                    start: 'top bottom-=20%',
+                    end: 'bottom center',
+                    trigger: howItWorksItems[2],
+                    toggleActions: 'play reverse play reverse',
+                    markers: false,
+                    onEnter: () => {
+                        if (thirdItemTimer) {
+                            clearTimeout(thirdItemTimer);
+                            thirdItemTimer = null;
+                        }
+                        thirdVideo.play();
                     },
-                    '<'
-                )
-                .to(howItWorksItems[2], {
+                    onEnterBack: () => {
+                        if (thirdItemTimer) {
+                            clearTimeout(thirdItemTimer);
+                            thirdItemTimer = null;
+                        }
+                        thirdVideo.play();
+                    },
+                    onLeave: () => {
+                        thirdItemTimer = setTimeout(() => {
+                            thirdVideo.pause();
+                        }, 1000);
+                    },
+                    onLeaveBack: () => {
+                        thirdItemTimer = setTimeout(() => {
+                            thirdVideo.pause();
+                        }, 1000);
+                    }
+                }
+            });
+
+            tl3.fromTo(
+                howItWorksItems[2],
+                { autoAlpha: 0 },
+                {
                     autoAlpha: 1,
                     duration: 1
-                })
-                .from(
-                    thirdPhoneImage,
-                    {
-                        duration: 1,
-                        yPercent: 30
-                    },
-                    '<'
-                )
-                .addLabel('thirdStep', '>');
+                }
+            ).from(
+                thirdPhoneImage,
+                {
+                    duration: 1,
+                    yPercent: 30
+                },
+                '<'
+            );
 
             if (columns[0]) {
                 gsap.to(columns[0], {
@@ -256,42 +339,164 @@ export default function HomepageAnimations() {
         },
 
         '(max-width: 640px)': function() {
-            const timeline = gsap.timeline({
+            const firstVideo = howItWorksItems[0].querySelector('video');
+            let firstItemTimer = null;
+            const tl1 = gsap.timeline({
                 scrollTrigger: {
-                    start: 'top top',
-                    end: '+=100%',
-                    scrub: 1,
-                    trigger: howItWorksContainer,
-                    pin: true,
-                    pinSpacing: true,
-                    refreshPriority: 10,
-                    snap: window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches ? null : 'labels'
+                    start: 'top bottom',
+                    end: 'bottom center',
+                    trigger: howItWorksItems[0],
+                    toggleActions: 'play reverse play reverse',
+                    markers: false,
+                    onEnter: () => {
+                        if (firstItemTimer) {
+                            clearTimeout(firstItemTimer);
+                            firstItemTimer = null;
+                        }
+                        firstVideo.play();
+                    },
+                    onEnterBack: () => {
+                        if (firstItemTimer) {
+                            clearTimeout(firstItemTimer);
+                            firstItemTimer = null;
+                        }
+                        firstVideo.play();
+                    },
+                    onLeave: () => {
+                        firstItemTimer = setTimeout(() => {
+                            firstVideo.pause();
+                        }, 1000);
+                    },
+                    onLeaveBack: () => {
+                        firstItemTimer = setTimeout(() => {
+                            firstVideo.pause();
+                        }, 1000);
+                    }
                 }
             });
 
-            timeline
-                .to(howItWorksItems[0], {
-                    autoAlpha: 0,
-                    duration: 1
-                })
-
-                .to(howItWorksItems[1], {
+            tl1.fromTo(
+                howItWorksItems[0],
+                { autoAlpha: 0 },
+                {
                     autoAlpha: 1,
                     duration: 1
-                })
+                }
+            );
 
-                .addLabel('secondStep', '>')
-                .to(howItWorksItems[1], {
-                    autoAlpha: 0,
-                    duration: 1
-                })
+            const secondVideo = howItWorksItems[1].querySelector('video');
+            let secondItemTimer = null;
+            const tl2 = gsap.timeline({
+                scrollTrigger: {
+                    start: 'top center',
+                    end: 'bottom center',
+                    trigger: howItWorksItems[1],
+                    toggleActions: 'play reverse play reverse',
+                    markers: false,
+                    onEnter: () => {
+                        if (secondItemTimer) {
+                            clearTimeout(secondItemTimer);
+                            secondItemTimer = null;
+                        }
+                        secondVideo.play();
+                    },
+                    onEnterBack: () => {
+                        if (secondItemTimer) {
+                            clearTimeout(secondItemTimer);
+                            secondItemTimer = null;
+                        }
+                        secondVideo.play();
+                    },
+                    onLeave: () => {
+                        secondItemTimer = setTimeout(() => {
+                            secondVideo.pause();
+                        }, 1000);
+                    },
+                    onLeaveBack: () => {
+                        secondItemTimer = setTimeout(() => {
+                            secondVideo.pause();
+                        }, 1000);
+                    }
+                }
+            });
 
-                .to(howItWorksItems[2], {
+            tl2.fromTo(
+                howItWorksItems[1],
+                { autoAlpha: 0 },
+                {
                     autoAlpha: 1,
                     duration: 1
-                })
+                }
+            )
+                .from(
+                    secondPhoneImage,
+                    {
+                        duration: 1,
+                        yPercent: 15
+                    },
+                    '<'
+                )
+                .from(
+                    secondTextBlock,
+                    {
+                        duration: 1,
+                        yPercent: 50
+                    },
+                    '<'
+                );
 
-                .addLabel('thirdStep', '>');
+            const thirdVideo = howItWorksItems[2].querySelector('video');
+            let thirdItemTimer = null;
+
+            const tl3 = gsap.timeline({
+                scrollTrigger: {
+                    start: 'top center',
+                    end: 'bottom center',
+                    trigger: howItWorksItems[2],
+                    toggleActions: 'play reverse play reverse',
+                    markers: false,
+                    onEnter: () => {
+                        if (thirdItemTimer) {
+                            clearTimeout(thirdItemTimer);
+                            thirdItemTimer = null;
+                        }
+                        thirdVideo.play();
+                    },
+                    onEnterBack: () => {
+                        if (thirdItemTimer) {
+                            clearTimeout(thirdItemTimer);
+                            thirdItemTimer = null;
+                        }
+                        thirdVideo.play();
+                    },
+                    onLeave: () => {
+                        thirdItemTimer = setTimeout(() => {
+                            thirdVideo.pause();
+                        }, 1000);
+                    },
+                    onLeaveBack: () => {
+                        thirdItemTimer = setTimeout(() => {
+                            thirdVideo.pause();
+                        }, 1000);
+                    }
+                }
+            });
+
+            tl3.fromTo(
+                howItWorksItems[2],
+                { autoAlpha: 0 },
+                {
+                    autoAlpha: 1,
+                    duration: 1
+                }
+            ).from(
+                thirdPhoneImage,
+                {
+                    duration: 1,
+                    yPercent: 15
+                },
+                '<'
+            );
         },
 
         all: function() {
@@ -331,8 +536,6 @@ export default function HomepageAnimations() {
             });
         }
     });
-
-  
 
     const loadHandler = () => {
         if (window.matchMedia(`(max-width: ${TABLET_WIDTH}px)`).matches) {

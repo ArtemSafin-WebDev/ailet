@@ -23,11 +23,9 @@
 
 .how-it-works__items {
     position: relative;
-    min-height: 100vh;
+   
 
-    @include breakpoint(mobile) {
-        min-height: calc(100vh - 8rem);
-    }
+   
 }
 
 .how-it-works__item {
@@ -38,18 +36,9 @@
     padding: 9.5rem 0;
     width: 100%;
 
+    min-height: 100vh;
 
-    position: absolute;
-    left: 0;
-    top: 50%;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-50%);
-
-    &:first-child {
-        opacity: 1;
-        visibility: inherit;
-    }
+   
 
     @include breakpoint(small-tablet) {
         display: flex;
@@ -61,7 +50,10 @@
 
     @include breakpoint(mobile) {
         padding: 1rem 0;
+        min-height: 57rem;
     }
+
+   
 }
 
 .how-it-works__item-left-col {
@@ -339,12 +331,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 19rem;
+    padding-bottom: 6em;
     padding-top: 2rem;
 
 
     @include breakpoint(mobile) {
         padding-bottom: 4rem;
-        padding-top: 1rem;
+        padding-top: 0;
     }
 }
