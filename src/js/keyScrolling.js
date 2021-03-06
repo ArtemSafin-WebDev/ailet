@@ -44,7 +44,7 @@ export default function KeyScrolling() {
 
             // const nextSection = positions.find(pos => pos > window.scrollY);
 
-            const nextSections = positions.filter(pos => pos > window.scrollY);
+            const nextSections = positions.filter(pos => pos > Math.ceil(window.scrollY));
             if (debug) console.log('Next sections', nextSections);
             if (nextSections.length) {
                 const nextSection = nextSections[0];
@@ -60,7 +60,7 @@ export default function KeyScrolling() {
             event.preventDefault();
             if (debug) console.log('PageUp Pressed');
 
-            const prevSections = positions.filter(pos => pos < window.scrollY);
+            const prevSections = positions.filter(pos => pos < Math.floor(window.scrollY));
             if (debug) console.log('Prev sections', prevSections);
 
             if (prevSections.length) {
