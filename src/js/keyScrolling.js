@@ -37,7 +37,7 @@ export default function KeyScrolling() {
     positions = calculatePositions();
 
     const scrollDown = () => {
-        const nextSections = positions.filter(pos => pos > Math.ceil(window.scrollY));
+        const nextSections = positions.filter(pos => pos > Math.ceil(window.scrollY) + 2);
         if (debug) console.log('Next sections', nextSections);
         if (nextSections.length) {
             const nextSection = nextSections[0];
@@ -50,7 +50,7 @@ export default function KeyScrolling() {
     };
 
     const scrollUp = () => {
-        const prevSections = positions.filter(pos => pos < Math.floor(window.scrollY));
+        const prevSections = positions.filter(pos => pos < Math.floor(window.scrollY) - 2);
         if (debug) console.log('Prev sections', prevSections);
 
         if (prevSections.length) {
