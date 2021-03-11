@@ -12,7 +12,7 @@ export default function KeyScrolling() {
     let positions = [];
 
     const calculatePositions = () => {
-        let positions = [];
+        let positions = [window.innerHeight / 2.4, window.innerHeight * 1.5];
 
         blocks.forEach(block => {
             const blockPos = block.getBoundingClientRect().top + window.scrollY;
