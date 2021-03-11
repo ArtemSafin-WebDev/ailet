@@ -43,7 +43,14 @@ export default function KeyScrolling() {
             const nextSection = nextSections[0];
             if (debug) console.log('Next section', nextSection);
 
-            gsap.to(window, { duration: 2, scrollTo: nextSection });
+            const speed = 0.002;
+            const distance = Math.abs(nextSection - window.scrollY);
+
+            const time = speed * distance;
+
+            console.log('Time', time)
+
+            gsap.to(window, { duration: speed * distance, scrollTo: nextSection });
         } else {
             console.warn('No next section present', window.scrollY, positions);
         }
@@ -57,7 +64,10 @@ export default function KeyScrolling() {
             const prevSection = prevSections[prevSections.length - 1];
             if (debug) console.log('Prev section', prevSection);
 
-            gsap.to(window, { duration: 2, scrollTo: prevSection });
+            const speed = 0.002;
+            const distance = Math.abs(prevSection - window.scrollY);
+
+            gsap.to(window, { duration: speed * distance, scrollTo: prevSection });
         } else {
             if (debug) console.warn('No prev section present', window.scrollY, positions);
         }
