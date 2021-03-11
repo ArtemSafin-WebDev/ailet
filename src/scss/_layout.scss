@@ -25,7 +25,8 @@
     width: 100%;
     z-index: 10;
     background-color: var(--deep-blue);
-
+    backface-visibility: hidden;
+    transform: translateZ(0);
 
     .intro-animation-finished & {
         @include breakpoint(tablet) {

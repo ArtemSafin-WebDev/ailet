@@ -101,7 +101,8 @@
         color: var(--deep-blue);
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
         color: var(--primary-color);
     }
 
@@ -239,7 +240,8 @@
         display: block;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
         background-color: var(--primary-color);
     }
 

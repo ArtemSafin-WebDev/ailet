@@ -10,10 +10,17 @@ import Validation from './validation';
 import ContactMap from './map';
 import KeyScrolling from './keyScrolling';
 import VideoController from './videoControllet';
+import Cookies from './cookies';
 
 
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
+        get: function(){
+            return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+        }
+    })
    
     polyfills();
     detectTouch();
@@ -26,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     Validation();
     ContactMap();
     VideoController();
+    Cookies();
    
 });
 

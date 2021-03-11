@@ -2,17 +2,14 @@ import { clearAllBodyScrollLocks, disableBodyScroll, enableBodyScroll } from 'bo
 
 // import { lockScroll, unlockScroll } from "./scrollBlocker";
 
-
-
-
 export default function Menu() {
     const menuBtn = document.querySelector('.page-header__menu-link');
 
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-    document.documentElement.style.setProperty('--sb-width', scrollbarWidth + "px");
+    document.documentElement.style.setProperty('--sb-width', scrollbarWidth + 'px');
 
-    console.log('Scrollbar width', scrollbarWidth)
+    console.log('Scrollbar width', scrollbarWidth);
 
     const menu = document.querySelector('.menu');
     let menuOpen = false;
@@ -23,12 +20,12 @@ export default function Menu() {
         // lockScroll(menu);
 
         disableBodyScroll(menu, {
-            reserveScrollBarGap: true,
-        })
+            reserveScrollBarGap: true
+        });
         const event = new CustomEvent('menuopen');
 
         document.dispatchEvent(event);
-    }
+    };
 
     const closeMenu = () => {
         menuOpen = false;
@@ -39,20 +36,19 @@ export default function Menu() {
         const event = new CustomEvent('menuclose');
 
         document.dispatchEvent(event);
-    }
+    };
     if (menu && menuBtn) {
-        console.log('Menu code')
+        console.log('Menu code');
         menuBtn.addEventListener('click', event => {
             event.preventDefault();
 
             if (!menuOpen) {
-               openMenu()
+                openMenu();
             } else {
-              closeMenu();
+                closeMenu();
             }
         });
     }
-
 
     document.addEventListener('anchorclick', () => {
         if (menuOpen) {
@@ -60,6 +56,11 @@ export default function Menu() {
         }
     });
 
+    document.addEventListener('keyup', event => {
+        if (event.key === 'Escape' && menuOpen) {
+            closeMenu();
+        }
+    });
 
     const formOpenBtns = Array.from(document.querySelectorAll('.js-form-open'));
     const formMenu = document.querySelector('.contact-form');
@@ -73,13 +74,13 @@ export default function Menu() {
         // lockScroll(formMenu);
 
         disableBodyScroll(formMenu, {
-            reserveScrollBarGap: true,
-        })
+            reserveScrollBarGap: true
+        });
 
         const event = new CustomEvent('formopen');
 
         document.dispatchEvent(event);
-    }
+    };
     const closeFormMenu = () => {
         document.body.classList.remove('contact-form-shown');
         formMenuOpen = false;
@@ -90,8 +91,7 @@ export default function Menu() {
         const event = new CustomEvent('formclose');
 
         document.dispatchEvent(event);
-    }
-
+    };
 
     formOpenBtns.forEach(element => {
         element.addEventListener('click', event => {
@@ -104,8 +104,8 @@ export default function Menu() {
 
                 openFormMenu();
             }
-        })
-    })
+        });
+    });
     formCloseBtns.forEach(element => {
         element.addEventListener('click', event => {
             event.preventDefault();
@@ -113,6 +113,13 @@ export default function Menu() {
             if (formMenuOpen) {
                 closeFormMenu();
             }
-        })
-    })
+        });
+    });
+
+
+    document.addEventListener('keyup', event => {
+        if (event.key === 'Escape' && formMenuOpen) {
+            closeFormMenu()
+        }
+    });
 }

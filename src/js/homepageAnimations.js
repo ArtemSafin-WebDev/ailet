@@ -27,7 +27,7 @@ export default function HomepageAnimations() {
     const logoWhite = document.querySelector('.page-header__logo-image--white');
     const clientsSlidersContainer = document.querySelector('.clients__sliders');
     const clientsSliders = Array.from(document.querySelectorAll('.clients__slider'));
-
+    const mainVideo = document.querySelector('.side-screen-inner__video-container video');
     ScrollTrigger.saveStyles(
         '.page-header, .side-screen, .side-screen-inner, .questions__items, .questions__item, .intro, .intro__shape-image, .page-header__right-col, .page-header__logo-image:not(.page-header__logo-image--white), .page-header__logo-image--white, .why-ailet__benefits, .why-ailet__benefits-col, .clients__sliders, .clients__slider'
     );
@@ -37,6 +37,7 @@ export default function HomepageAnimations() {
             intro.classList.add('remove-transform');
 
             const timeline = gsap.timeline({
+               
                 scrollTrigger: {
                     start: 'top top',
                     refreshPriority: 15,
@@ -44,7 +45,13 @@ export default function HomepageAnimations() {
                     scrub: 1,
                     trigger: intro,
                     pin: intro,
-                    pinSpacing: true
+                    pinSpacing: true,
+                    onEnterBack: () => {
+                        mainVideo.play();
+                    },
+                    onLeave: () => {
+                        mainVideo.pause();
+                    },
                 }
             });
 
