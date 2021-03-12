@@ -50,7 +50,7 @@ export default function KeyScrolling() {
 
             console.log('Time', time)
 
-            gsap.to(window, { duration: speed * distance, scrollTo: nextSection });
+            gsap.to(window, { duration: speed * distance, ease: 'none', scrollTo: nextSection });
         } else {
             console.warn('No next section present', window.scrollY, positions);
         }
@@ -67,7 +67,7 @@ export default function KeyScrolling() {
             const speed = 0.002;
             const distance = Math.abs(prevSection - window.scrollY);
 
-            gsap.to(window, { duration: speed * distance, scrollTo: prevSection });
+            gsap.to(window, { duration: speed * distance, ease: 'none', scrollTo: prevSection });
         } else {
             if (debug) console.warn('No prev section present', window.scrollY, positions);
         }
