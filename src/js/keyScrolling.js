@@ -4,6 +4,8 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function KeyScrolling() {
+
+    if (document.body.classList.contains('is-admin')) return;
     const blocks = Array.from(document.querySelectorAll('.js-key-scrolling-block'));
     const debug = false;
 
